@@ -28,9 +28,9 @@ document.body.appendChild(renderer.domElement);
 
 renderer.xr.enabled= true;
 
-const glbLoader= new THREE.GLTFLoader();
+//const glbLoader= new THREE.GLTFLoader();
 
-const arBtn= THREE.ARButton.createButton(renderer);
+const arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
@@ -59,18 +59,4 @@ currentMarker= marker;
 });
 }
 }
-let text = document.createElement("div");
-text.innerText = "Hip Hip Hurray"; // initial text, can update later
-text.id = "ar-message"; // optional, for styling or easy access
-text.style.position = "fixed";
-text.style.top = "20px";
-text.style.left = "50%";
-text.style.transform = "translateX(-50%)";
-text.style.background = "rgba(0,0,0,0.6)";
-text.style.color = "white";
-text.style.padding = "8px 12px";
-text.style.borderRadius = "8px";
-text.style.fontFamily = "sans-serif";
-text.style.zIndex = 9999;
-document.body.appendChild(text);
 });
