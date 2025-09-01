@@ -17,28 +17,28 @@ const dirLight= new THREE.DirectionalLight(0xffffff, 0.8);
 dirLight.position.set(5, 10, 5);
 scene.add(dirLight);
 
-const renderer= new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+/*const renderer= new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);*/
 /*renderer.domElement.style.position = "absolute";
 renderer.domElement.style.display = "none";
 renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
 renderer.domElement.style.border = "2px solid red";*/
-document.body.appendChild(renderer.domElement);
+//document.body.appendChild(renderer.domElement);
 
-renderer.xr.enabled= true;
+//renderer.xr.enabled= true;
 
 //const glbLoader= new THREE.GLTFLoader();
 
-const arBtn= ARButton.createButton(renderer);
+/*const arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
 arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
-document.body.appendChild(arBtn);
+document.body.appendChild(arBtn);*/
 //arBtn.addEventListener("click", modelLoad);
 
 //renderer.xr.addEventListener("sessionstart", setupXR);
