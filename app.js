@@ -52,7 +52,7 @@ const marker = L.marker([j.lat, j.lon], {
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-*/if (arBtn) {
+/*if (arBtn) {
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
