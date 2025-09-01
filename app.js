@@ -1,4 +1,4 @@
-import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
+//import L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 15, maxZoom: 19, minZoom: 1 });
 
