@@ -56,4 +56,7 @@ currentMarker= marker;
 });
 }
 }
+let text= document.createElement("p");
+text.innerText= "hip hip hurray";
+document.body.appendChild(text);
 });
