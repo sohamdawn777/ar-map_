@@ -62,4 +62,6 @@ currentMarker= marker;
 });
 }*/
 }
+const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
+map.fitBounds(bounds);
 });
