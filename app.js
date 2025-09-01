@@ -24,6 +24,7 @@ renderer.domElement.style.display = "none";
 renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
+renderer.domElement.style.border = "2px solid red";
 document.body.appendChild(renderer.domElement);
 
 renderer.xr.enabled= true;
