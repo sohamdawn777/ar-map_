@@ -59,7 +59,7 @@ currentMarker= marker;
 }
 }
 let text = document.createElement("div");
-text.innerText = ""; // initial text, can update later
+text.innerText = "Hip Hip Hurray"; // initial text, can update later
 text.id = "ar-message"; // optional, for styling or easy access
 text.style.position = "fixed";
 text.style.top = "20px";
