@@ -51,6 +51,8 @@ const marker = L.marker([j.lat, j.lon], {
     icon: L.icon({ iconUrl: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/Icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
     title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
 
+  L.circle([j.lat,j.lon], { radius: 15, color: "black", fillColor: "blue", fillOpacity: 0.2 }).addTo(map);
+
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 if (arBtn) {
