@@ -38,7 +38,7 @@ arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
-arBtn.addEventListener("click", modelLoad);
+//arBtn.addEventListener("click", modelLoad);
 
 //renderer.xr.addEventListener("sessionstart", setupXR);
 
