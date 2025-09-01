@@ -5,6 +5,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, 
 let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model1.glb"}, {lat: 22.5999666, lon: 88.3729349, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model2.glb"}, {lat: 22.56492395, lon: 88.35405545738757, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model3.glb"}];
 const scene= new THREE.Scene();
 
+
 const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
 scene.add(camera);
 
@@ -56,7 +57,18 @@ currentMarker= marker;
 });
 }
 }
-let text= document.createElement("p");
-text.innerText= "hip hip hurray";
+let text = document.createElement("div");
+text.innerText = ""; // initial text, can update later
+text.id = "ar-message"; // optional, for styling or easy access
+text.style.position = "fixed";
+text.style.top = "20px";
+text.style.left = "50%";
+text.style.transform = "translateX(-50%)";
+text.style.background = "rgba(0,0,0,0.6)";
+text.style.color = "white";
+text.style.padding = "8px 12px";
+text.style.borderRadius = "8px";
+text.style.fontFamily = "sans-serif";
+text.style.zIndex = 9999;
 document.body.appendChild(text);
 });
