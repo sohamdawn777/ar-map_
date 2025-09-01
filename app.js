@@ -4,8 +4,8 @@ const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
 
 let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model1.glb"}, {lat: 22.5999666, lon: 88.3729349, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model2.glb"}, {lat: 22.56492395, lon: 88.35405545738757, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model3.glb"}];
-const scene= new THREE.Scene();
 
+/*const scene= new THREE.Scene();
 
 const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
 scene.add(camera);
@@ -15,7 +15,7 @@ scene.add(ambLight);
 
 const dirLight= new THREE.DirectionalLight(0xffffff, 0.8);
 dirLight.position.set(5, 10, 5);
-scene.add(dirLight);
+scene.add(dirLight);*/
 
 /*const renderer= new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);*/
