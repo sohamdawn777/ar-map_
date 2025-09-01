@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded",() => {
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 15, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
