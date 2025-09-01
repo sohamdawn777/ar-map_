@@ -17,20 +17,20 @@ const dirLight= new THREE.DirectionalLight(0xffffff, 0.8);
 dirLight.position.set(5, 10, 5);
 scene.add(dirLight);
 
-const renderer= new THREE.WebGLRenderer({ antialias: true });
+/*const renderer= new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.domElement.style.position = "absolute";
 renderer.domElement.style.visibility = "hidden";
 renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
-document.body.appendChild(renderer.domElement);
+document.body.appendChild(renderer.domElement);*/
 
-renderer.xr.enabled= true;
+//renderer.xr.enabled= true;
 
 //const glbLoader= new THREE.GLTFLoader();
 
-const arBtn= ARButton.createButton(renderer);
+/*const arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
@@ -38,7 +38,7 @@ arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
-//arBtn.addEventListener("click", modelLoad);
+arBtn.addEventListener("click", modelLoad);*/
 
 //renderer.xr.addEventListener("sessionstart", setupXR);
 
@@ -52,11 +52,11 @@ const marker = L.marker([j.lat, j.lon], {
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-if (arBtn) {
+*/if (arBtn) {
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
 });
-}
+}*/
 }
 });
