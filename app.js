@@ -72,6 +72,7 @@ xrSession.addAnchor(pose, space);
 if (loadedModel && loadedModel.scene) {
 const position= pose.transform.position;
 loadedModel.scene.position.set(position.x, position.y, position.z);
+scene.add(loadedModel);
 anchorStatus= true;
 
 arMessage.textContent= "Experience AR!";
