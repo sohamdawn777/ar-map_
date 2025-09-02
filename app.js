@@ -73,6 +73,10 @@ marker.on("popupopen", () => {
 btn.style.visibility= "visible";
 currentMarker= marker;
 });
+marker.on("popupclose", () => {
+btn.style.visibility= "hidden";
+currentMarker= null;
+});
 }
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
