@@ -80,9 +80,9 @@ map.fitBounds(bounds);
 
 }
 
-function buttonCreate (btn) {
+function buttonCreate () {
 
-btn= document.createElement("button");
+let btn= document.createElement("button");
 btn.innerText= "View in AR";
 btn.style.position= "fixed";
 btn.style.bottom= "20px";
@@ -90,6 +90,7 @@ btn.style.right= "20px";
 btn.style.zIndex= 9999;
 btn.style.visibility= "hidden";
 document.body.appendChild(btn);
+return btn;
 
 }
 
@@ -185,8 +186,6 @@ renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
 
-let arBtn;
-let fallBtn;
 let currentMarker= null;
 
 if (navigator.xr) {
@@ -194,13 +193,13 @@ log("true");
 navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
 if (supported) {
 log(`supported: ${supported}`);
-buttonCreate(arBtn);
+let arBtn= buttonCreate();
 arBtn.addEventListener("click", setupXR);
 mapMarker(arBtn, data);
 }
 else {
 log("immersive ar not supported");
-buttonCreate(fallBtn);
+let fallBtn= buttonCreate();
 fallBtn.addEventListener("click", () => {
 log("model loading INITIATED");
 
