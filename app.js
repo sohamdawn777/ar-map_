@@ -7,7 +7,7 @@ function log(msg) {
     const div = document.createElement("div");
     div.id = "log";
     div.style.position = "fixed";
-    div.style.bottom = "0";
+    div.style.top = "0";
     div.style.left = "0";
     div.style.background = "white";
     div.style.padding = "10px";
