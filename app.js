@@ -1,4 +1,89 @@
 window.addEventListener("DOMContentLoaded",() => {
+
+function onLoad(gltf) {
+
+document.getElementById("loader-element").style.visibility= "hidden";
+document.getElementById("progress-bar").style.visibility= "hidden";
+
+gltf.scene.position.set(0,0,0);
+gltf.scene.scale.set(1,1,1);
+scene.add(gltf.scene);
+
+}
+
+function onProgress(xhr) {
+
+let progressBar= document.getElementById("progress-bar");
+progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
+
+}
+
+function onError(error) {
+
+//let err= document.getElementById("error");
+//err.innerHTML=`An Error Occurred: ${error}.`;
+
+}
+
+function modelLoad(event) {
+
+glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
+
+}
+
+async function setupXR(event) {
+
+const arMessage = document.createElement("div");
+arMessage.id = "ar-message";
+arMessage.textContent = "Tap on a valid surface (e.g: Table, Chair etc.).";
+arMessage.style.position = "fixed";
+arMessage.style.top = "20px";
+arMessage.style.left = "50%";
+arMessage.style.transform = "translateX(-50%)";
+arMessage.style.background = "rgba(0,0,0,0.6)";
+arMessage.style.color = "white";
+arMessage.style.padding = "8px 12px";
+arMessage.style.borderRadius = "8px";
+arMessage.style.fontFamily = "sans-serif";
+arMessage.style.zIndex = 9999;
+document.body.appendChild(arMessage);
+
+const xrSession= renderer.xr.getSession();
+const space= await xrSession.requestReferenceSpace("local-floor");
+const viewerSpace= await xrSession.requestReferenceSpace("viewer");
+const source= await xrSession.requestHitTestSource({space: viewerSpace });
+
+renderer.setAnimationLoop(() => {
+renderer.render(scene, camera);
+});
+
+let anchorStatus= false;
+xrSession.addEventListener("select", (xrFrame) => {
+try {
+const result= xrFrame.getHitTestResults(source);
+if (result.length>0 && anchorStatus=== false) {
+const pose= result[0].getPose(space);
+
+xrSession.addAnchor(pose, space);
+anchorStatus= true;
+
+arMessage.textContent= "Experience AR!";
+setTimeout(() => {
+arMessage.textContent="";}, 3000);
+}
+else {
+}
+}
+catch {
+arMessage.textContent= "Invalid surface chosen. Please select a valid surface.";
+setTimeout(() => {
+arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";}, 3000);
+}
+});
+
+}
+
+
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
