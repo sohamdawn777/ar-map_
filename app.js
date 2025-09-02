@@ -121,8 +121,8 @@ catch (e) {
 log(e);
 const Model= await modelLoad();
 
-renderer.domElement.style.display= "block";
-renderer.domElement.style.zIndex= "10000";
+//renderer.domElement.style.display= "block";
+//renderer.domElement.style.zIndex= "10000";
 
 let fallBtn= buttonCreate();
 fallBtn.addEventListener("click",async () => {
