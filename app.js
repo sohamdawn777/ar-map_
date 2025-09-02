@@ -69,7 +69,7 @@ modelLoad();
 renderer.style.display= "block";
 renderer.style.zIndex= "10000";
 
-const arMessage = document.createElement("div");
+/*const arMessage = document.createElement("div");
 arMessage.id = "ar-message";
 arMessage.textContent = "Tap on a valid surface (e.g: Table, Chair etc.).";
 arMessage.style.position = "fixed";
@@ -82,7 +82,7 @@ arMessage.style.padding = "8px 12px";
 arMessage.style.borderRadius = "8px";
 arMessage.style.fontFamily = "sans-serif";
 arMessage.style.zIndex = 9999;
-document.body.appendChild(arMessage);
+document.body.appendChild(arMessage);*/
 
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
@@ -108,25 +108,27 @@ loadedModel.scene.position.set(position.x, position.y, position.z);
 scene.add(loadedModel.scene);
 anchorStatus= true;
 
-arMessage.textContent= "Experience AR!";
+/*arMessage.textContent= "Experience AR!";
 setTimeout(() => {
-arMessage.textContent="";}, 3000);
+arMessage.textContent="";}, 3000);*/
 }
 
 else {
-arMessage.textContent= "Model not loaded yet";
+/*arMessage.textContent= "Model not loaded yet";
 setTimeout(() => {
 arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";
-}, 3000);
+}, 3000);*/
+log("model not loaded yet");
 }
 }
 else {
 }
 }
 catch {
-arMessage.textContent= "Invalid surface chosen. Please select a valid surface.";
+/*arMessage.textContent= "Invalid surface chosen. Please select a valid surface.";
 setTimeout(() => {
-arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";}, 3000);
+arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";}, 3000);*/
+log("Invalid surface chosen");
 }
 });
 xrSession.addEventListener("end",() => {
