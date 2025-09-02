@@ -100,6 +100,8 @@ return btn;
 
 async function setupXR(event) {
 
+log("setupXR triggered");
+
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 log("session requested");
@@ -112,7 +114,9 @@ renderer.domElement.style.zIndex= "10000";
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
 const viewerSpace= await xrSession.requestReferenceSpace("viewer");
+log("reference space requested");
 const source= await xrSession.requestHitTestSource({space: viewerSpace });
+log("hit test source requested");
 
 /*renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
