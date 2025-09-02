@@ -115,12 +115,28 @@ log("model received");
 //renderer.domElement.style.zIndex= "10000";
 
 //log("button created fallBtn");
-fallBtn.addEventListener("click",async () => {
+
+document.getElementById("modal").style.display= "block";
+
+const fallBtn1= document.getElementById("modal2D");
+const fallBtn2= document.getElementById("retry");
+const fallBtn3= document.getElementById("cancel");
+
+
+fallBtn1.addEventListener("click",async () => {
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
 vid.play();
 
+});
+
+fallBtn2.addEventListener("click", () => {
+setupXR();
+});
+
+fallBtn3.addEventListener("click", () => {
+document.getElementById("modal").style.display= "none";
 });
 
 if (Model && Model.scene) {
