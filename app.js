@@ -106,7 +106,6 @@ log("session requested");
 
 catch (e) {
 
-log(e);
 const Model= await modelLoad();
 
 log("model received");
