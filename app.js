@@ -20,6 +20,8 @@ function log(msg) {
 
 function onLoad(gltf) {
 
+log("model loaded");
+
 document.getElementById("loader-element").style.visibility= "hidden";
 document.getElementById("progress-bar").style.visibility= "hidden";
 
@@ -32,6 +34,8 @@ loadedModel= gltf;
 
 function onProgress(xhr) {
 
+log("model loading on progress");
+
 let progressBar= document.getElementById("progress-bar");
 progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
@@ -39,12 +43,16 @@ progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
 function onError(error) {
 
+log("error is coming");
+
 let err= document.getElementById("error");
 err.innerHTML=`An Error Occurred: ${error}.`;
 
 }
 
 function modelLoad() {
+
+log("model loading initiated");
 
 glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
 
@@ -56,7 +64,9 @@ modelLoad();
 
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
-renderer.style.visibility= "block";
+log("session requested");
+
+renderer.style.display= "block";
 renderer.style.zIndex= "10000";
 
 const arMessage = document.createElement("div");
