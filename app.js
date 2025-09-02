@@ -179,7 +179,9 @@ const glbLoader= new THREE.GLTFLoader();
 let arBtn;
 let fallBtn;
 
-if (navigator.xr && navigator.xr.isSessionSupported) {
+if (navigator.xr) {
+navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
+if (supported) {
 arBtn= document.createElement("button");
 arBtn.id="AR";
 arBtn.style.position= "fixed";
@@ -189,12 +191,9 @@ arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
 arBtn.addEventListener("click", setupXR);
-
-//renderer.xr.addEventListener("sessionstart", setupXR);
 }
-
 else {
-log("reached");
+log("immersive ar not supported");
 fallBtn= document.createElement("button");
 fallBtn.id="fall";
 fallBtn.innerText="View in AR";
@@ -205,10 +204,11 @@ fallBtn.style.zIndex= 9999;
 fallBtn.style.visibility= "hidden";
 document.body.appendChild(fallBtn);
 log("fallBtn added");
-fallBtn.addEventListener("click", modelLoad);
-log("event added");
+fallBtn.addEventListener("click", () => {
+log("model loading INITIATED");
 
-/*if (loadedModel && loadedModel.scene) {
+glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
+if (loadedModel && loadedModel.scene) {
 camera.position.set(0, 1.6, 3);
 
 scene.add(loadedModel.scene);
@@ -218,7 +218,11 @@ renderer.style.zIndex= "10000";
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
-}*/
+}
+});
+log("event added");
+}
+}
 }
 
 let currentMarker= null;
