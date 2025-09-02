@@ -153,9 +153,15 @@ const marker = L.marker([j.lat, j.lon], {
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-if (arBtn || fallBtn) {
+if (arBtn) {
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
+currentMarker= marker;
+});
+}
+else if (fallBtn) {
+marker.on("popupopen", () => {
+document.querySelector("#fall").style.visibility= "visible";
 currentMarker= marker;
 });
 }
