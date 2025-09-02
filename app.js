@@ -20,8 +20,8 @@ progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
 function onError(error) {
 
-//let err= document.getElementById("error");
-//err.innerHTML=`An Error Occurred: ${error}.`;
+let err= document.getElementById("error");
+err.innerHTML=`An Error Occurred: ${error}.`;
 
 }
 
