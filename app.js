@@ -129,6 +129,7 @@ const vid= document.createElement("video");
 vid.srcObject= realCam;
 vid.play();
 
+log("video la la la la");
 });
 
 fallBtn2.addEventListener("click", () => {
