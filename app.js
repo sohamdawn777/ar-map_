@@ -102,9 +102,15 @@ async function setupXR(event) {
 
 log("setupXR triggered");
 
+try {
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 log("session requested");
+}
+
+catch (e) {
+log(`Error: ${e}`);
+}
 
 //modelLoad();
 
