@@ -147,6 +147,25 @@ vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
 
+//renderer.domElement.addEventListener("resize", reSize);
+
+
+const rayCast= new THREE.Raycaster();
+
+const pointer= rayCast.vector2();
+pointer.x= (event.clientX/window.innerWidth)*2-1;
+pointer.y= -(event.clientY/window.innerHeight)*2-1;
+
+rayCast.setFromCamera(pointer, camera);
+
+const intersects= rayCast.intersectObject(Model, true);
+
+if (intersects.length>0) {
+const point= intersects[0].object;
+
+}
+
+
 vid.onloadeddata = () => {
 if (vid.readyState>=2) {
 renderer.setAnimationLoop(() => {
