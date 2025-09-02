@@ -111,9 +111,6 @@ const Model= await modelLoad();
 
 log("model received");
 
-//renderer.domElement.style.display= "block";
-//renderer.domElement.style.zIndex= "10000";
-
 //log("button created fallBtn");
 
 document.getElementById("modal").style.display= "block";
@@ -124,12 +121,42 @@ const fallBtn3= document.getElementById("cancel");
 
 
 fallBtn1.addEventListener("click",async () => {
+document.getElementById("modal").display= "none";
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
+
+if (Model && Model.scene) {
+Model.scene.position.set(0,0,0);
+Model.scene.scale.set(1,1,1);
+scene.add(Model.scene);
+camera.position.set(0, 1.6, 3);
+
+renderer.domElement.style.position= "absolute";
+renderer.domElement.style.pointerEvents= "auto";
+renderer.domElement.style.display= "block";
+renderer.domElement.style.zIndex= "10000";
+renderer.setClearColor(0x000000, 0);
+renderer.domElement.style.opacity= "1";
+
+
+renderer.setAnimationLoop(() => {
+renderer.render(scene, camera);
+});
+
+vid.setAttribute("autoplay", true);
+vid.setAttribute("muted", true);
+vid.setAttribute("playsinline", true);
+vid.style.position = "absolute";
+vid.style.top = "0";
+vid.style.left = "0";
+vid.style.width = "100%";
+vid.style.height = "100%";
+vid.style.zIndex = "9999"; // Behind everything
+document.body.appendChild(vid);
 vid.play();
 
-log("video la la la la");
+}
 });
 
 fallBtn2.addEventListener("click", () => {
@@ -139,22 +166,7 @@ setupXR();
 fallBtn3.addEventListener("click", () => {
 document.getElementById("modal").style.display= "none";
 });
-
-if (Model && Model.scene) {
-Model.scene.position.set(0,0,0);
-Model.scene.scale.set(1,1,1);
-scene.add(Model.scene);
-camera.position.set(0, 1.6, 3);
-
-/*renderer.domElement.style.display= "block";
-renderer.domElement.style.zIndex= "10000";
-renderer.setAnimationLoop(() => {
-renderer.render(scene, camera);
-});*/
 }
-}
-
-
 
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
@@ -232,6 +244,9 @@ renderer.domElement.style.display = "none";
 renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
+renderer.domElement.style.width= "100%";
+renderer.domElement.style.height= "100%";
+renderer.domElement.style.pointerEvents= "none";
 renderer.domElement.style.border = "2px solid red";
 document.body.appendChild(renderer.domElement);
 
