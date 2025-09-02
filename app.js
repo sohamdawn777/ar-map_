@@ -180,6 +180,7 @@ let arBtn;
 let fallBtn;
 
 if (navigator.xr) {
+log("true");
 navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
 if (supported) {
 arBtn= document.createElement("button");
