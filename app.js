@@ -100,6 +100,18 @@ return btn;
 
 async function setupXR(event) {
 
+if (loadedModel && loadedModel.scene) {
+camera.position.set(0, 1.6, 3);
+
+scene.add(loadedModel.scene);
+
+renderer.domElement.style.display= "block";
+renderer.domElement.style.zIndex= "10000";
+renderer.setAnimationLoop(() => {
+renderer.render(scene, camera);
+});
+}
+
 log("setupXR triggered");
 
 try {
@@ -202,36 +214,8 @@ const glbLoader= new THREE.GLTFLoader();
 
 let currentMarker= null;
 
-if (navigator.xr) {
-log("true");
-navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
-if (supported) {
-log(`supported: ${supported}`);
 let arBtn= buttonCreate();
 arBtn.addEventListener("click", setupXR);
 mapMarker(arBtn, data);
-}
-else {
-log("immersive ar not supported");
-let fallBtn= buttonCreate();
-fallBtn.addEventListener("click", () => {
-log("model loading INITIATED");
 
-glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
-if (loadedModel && loadedModel.scene) {
-camera.position.set(0, 1.6, 3);
-
-scene.add(loadedModel.scene);
-
-renderer.domElement.style.display= "block";
-renderer.domElement.style.zIndex= "10000";
-renderer.setAnimationLoop(() => {
-renderer.render(scene, camera);
-});
-}
-});
-mapMarker(fallBtn, data);
-}
-});
-}
 });
