@@ -122,7 +122,7 @@ const vid= document.createElement("video");
 vid.srcObject= realCam;
 
 if (Model && Model.scene) {
-Model.scene.position.set(0,0,0);
+Model.scene.position.set(0,3,4);
 Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
