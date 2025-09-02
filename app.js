@@ -8,7 +8,6 @@ let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubuserconten
 const scene= new THREE.Scene();
 
 const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 10);
-//scene.add(camera);
 
 const ambLight= new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambLight);
@@ -31,15 +30,29 @@ renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
 
-//const arBtn= ARButton.createButton(renderer);
-/*arBtn.id="AR";
+if (navigator.xr && navigator.xr.isSessionSupported) {
+const arBtn= ARButton.createButton(renderer);
+arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
 arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
-document.body.appendChild(arBtn);*/
-//arBtn.addEventListener("click", modelLoad);
+document.body.appendChild(arBtn);
+arBtn.addEventListener("click", modelLoad);
+}
+
+else {
+const fallBtn= document.createElement("button");
+fallBtn.id="fall";
+fallBtn.style.position= "fixed";
+fallBtn.style.bottom= "20px";
+fallBtn.style.right= "20px";
+fallBtn.style.zIndex= 9999;
+fallBtn.style.visibility= "hidden";
+document.body.appendChild(fallBtn);
+fallBtn.addEventListener("click", modelLoad);
+}
 
 //renderer.xr.addEventListener("sessionstart", setupXR);
 
@@ -55,12 +68,12 @@ const marker = L.marker([j.lat, j.lon], {
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-/*if (arBtn) {
+if (arBtn || fallBtn) {
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
 });
-}*/
+}
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
