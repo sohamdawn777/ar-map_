@@ -104,7 +104,7 @@ const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatu
 
 log("session requested");
 
-modelLoad();
+//modelLoad();
 
 renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
@@ -114,7 +114,7 @@ const space= await xrSession.requestReferenceSpace("local-floor");
 const viewerSpace= await xrSession.requestReferenceSpace("viewer");
 const source= await xrSession.requestHitTestSource({space: viewerSpace });
 
-renderer.setAnimationLoop(() => {
+/*renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
 
@@ -155,7 +155,7 @@ scene.remove(loadedModel.scene);
 }
 renderer.domElement.style.display= "none";
 renderer.domElement.style.zIndex= "0";
-});
+});*/
 }
 
 
