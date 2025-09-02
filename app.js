@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded",() => {
 
-let loadedModel;
+//let loadedModel;
 
 function log(msg) {
   const logBox = document.getElementById("log") || (() => {
@@ -26,9 +26,9 @@ document.getElementById("loader-element").style.visibility= "hidden";
 document.getElementById("progress-bar").style.visibility= "hidden";
 
 //gltf.scene.position.set(0,0,0);
-gltf.scene.scale.set(1,1,1);
+//gltf.scene.scale.set(1,1,1);
 //scene.add(gltf.scene);
-loadedModel= gltf;
+//loadedModel= gltf;
 
 }
 
@@ -54,7 +54,11 @@ function modelLoad() {
 
 log("model loading initiated");
 
-glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
+return new Promise((resolve, reject) => {
+
+glbLoader.load(currentMarker.options.modelUrl, (gltf) => resolve(gltf), onProgress, 
+(error) => reject(error));
+});
 
 }
 
@@ -109,19 +113,19 @@ log("session requested");
 }
 
 catch (e) {
-log(`Error: ${e}`);
 
-modelLoad();
+const Model= await modelLoad();
 
 renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
 
 navigator.getUserMedia({video: true, audio: false});
 
-if (loadedModel && loadedModel.scene) {
+if (Model && Model.scene) {
+Model.scene.position.set(0,0,0);
+Model.scene.scale.set(1,1,1);
+scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
-
-scene.add(loadedModel.scene);
 
 renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
@@ -135,10 +139,10 @@ renderer.render(scene, camera);
 
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
-const viewerSpace= await xrSession.requestReferenceSpace("viewer");
+/*const viewerSpace= await xrSession.requestReferenceSpace("viewer");
 log("reference space requested");
 const source= await xrSession.requestHitTestSource({space: viewerSpace });
-log("hit test source requested");
+log("hit test source requested");*/
 
 /*renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
