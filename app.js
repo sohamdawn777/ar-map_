@@ -42,6 +42,9 @@ document.getElementById("progress-bar").style.visibility= "visible";
 log(`xhr.loaded: ${xhr.loaded}`);
 log(`xhr.total: ${xhr.total}`);
 
+log(document.getElementById("progress-bar"));
+log(document.getElementById("loader-element"));
+
 let progressBar= document.getElementById("progress-bar");
 progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
