@@ -173,7 +173,7 @@ fallBtn.style.visibility= "hidden";
 document.body.appendChild(fallBtn);
 fallBtn.addEventListener("click", modelLoad);
 
-if (loadedModel && loadedModel.scene) {
+/*if (loadedModel && loadedModel.scene) {
 camera.position.set(0, 1.6, 3);
 
 scene.add(loadedModel.scene);
@@ -183,7 +183,7 @@ renderer.style.zIndex= "10000";
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
-}
+}*/
 }
 
 let currentMarker= null;
