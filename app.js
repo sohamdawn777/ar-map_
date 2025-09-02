@@ -60,11 +60,11 @@ glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
 
 async function setupXR(event) {
 
-modelLoad();
-
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 log("session requested");
+
+modelLoad();
 
 renderer.style.display= "block";
 renderer.style.zIndex= "10000";
