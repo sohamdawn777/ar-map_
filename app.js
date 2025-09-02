@@ -39,6 +39,9 @@ log("model loading on progress");
 document.getElementById("loader-element").style.visibility= "visible";
 document.getElementById("progress-bar").style.visibility= "visible";
 
+log(`xhr.loaded: ${xhr.loaded}`);
+log(`xhr.total: ${xhr.total}`);
+
 let progressBar= document.getElementById("progress-bar");
 progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
