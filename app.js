@@ -20,7 +20,7 @@ function log(msg) {
 
 function onLoad(gltf) {
 
-log("model loaded");
+//log("model loaded");
 
 //document.getElementById("loader-element").style.visibility= "hidden";
 //document.getElementById("progress-bar").style.visibility= "hidden";
@@ -34,13 +34,13 @@ log("model loaded");
 
 function onProgress(xhr) {
 
-log("model loading on progress");
+//log("model loading on progress");
 
 document.getElementById("loader-element").style.visibility= "visible";
 document.getElementById("progress-bar").style.visibility= "visible";
 
-log(`xhr.loaded: ${xhr.loaded}`);
-log(`xhr.total: ${xhr.total}`);
+//log(`xhr.loaded: ${xhr.loaded}`);
+//log(`xhr.total: ${xhr.total}`);
 
 log(document.getElementById("progress-bar"));
 log(document.getElementById("loader-element"));
@@ -61,7 +61,7 @@ err.innerHTML=`An Error Occurred: ${error}.`;
 
 function modelLoad() {
 
-log("model loading initiated");
+//log("model loading initiated");
 log(currentMarker.options.modelUrl);
 
 return new Promise((resolve, reject) => {
@@ -115,7 +115,7 @@ return btn;
 
 async function setupXR(event) {
 
-log("setupXR triggered");
+//log("setupXR triggered");
 
 try {
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
@@ -128,7 +128,7 @@ catch (e) {
 log(e);
 const Model= await modelLoad();
 
-log("model received");
+//log("model received");
 
 //renderer.domElement.style.display= "block";
 //renderer.domElement.style.zIndex= "10000";
@@ -136,7 +136,7 @@ log("model received");
 let fallBtn= document.createElement("button");
 fallBtn.innerText= "View in 2D";
 document.body.appendChild(fallBtn);
-log("button created fallBtn");
+//log("button created fallBtn");
 fallBtn.addEventListener("click",async () => {
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
