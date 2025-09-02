@@ -44,13 +44,17 @@ err.innerHTML=`An Error Occurred: ${error}.`;
 
 }
 
-function modelLoad(event) {
+function modelLoad() {
 
 glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
 
 }
 
 async function setupXR(event) {
+
+modelLoad();
+
+navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 renderer.style.visibility= "block";
 renderer.style.zIndex= "10000";
