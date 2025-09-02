@@ -100,6 +100,24 @@ return btn;
 
 async function setupXR(event) {
 
+log("setupXR triggered");
+
+try {
+const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
+
+log("session requested");
+}
+
+catch (e) {
+log(`Error: ${e}`);
+
+modelLoad();
+
+renderer.domElement.style.display= "block";
+renderer.domElement.style.zIndex= "10000";
+
+navigator.getUserMedia({video: true, audio: false});
+
 if (loadedModel && loadedModel.scene) {
 camera.position.set(0, 1.6, 3);
 
@@ -111,23 +129,9 @@ renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
 }
-
-log("setupXR triggered");
-
-try {
-const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
-
-log("session requested");
 }
 
-catch (e) {
-log(`Error: ${e}`);
-}
 
-//modelLoad();
-
-//renderer.domElement.style.display= "block";
-//renderer.domElement.style.zIndex= "10000";
 
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
