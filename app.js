@@ -114,6 +114,7 @@ log("session requested");
 
 catch (e) {
 
+log(e);
 const Model= await modelLoad();
 
 renderer.domElement.style.display= "block";
