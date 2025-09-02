@@ -175,8 +175,13 @@ let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
 log("xr support possible");
+try {
 arBtn= ARButton.createButton(renderer);
 log("arBtn ka bhulla");
+}
+catch (e) {
+log(e);
+}
 arBtn.id="AR";
 log("chaliye");
 arBtn.style.position= "fixed";
