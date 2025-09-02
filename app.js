@@ -135,6 +135,9 @@ const Model= await modelLoad();
 
 let fallBtn= document.createElement("button");
 fallBtn.innerText= "View in 2D";
+fallBtn.style.zIndex= 9999;
+fallBtn.style.top= "20px";
+fallBtn.style.right= "20px";
 document.body.appendChild(fallBtn);
 //log("button created fallBtn");
 fallBtn.addEventListener("click",async () => {
