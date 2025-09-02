@@ -178,6 +178,7 @@ const glbLoader= new THREE.GLTFLoader();
 
 let arBtn;
 let fallBtn;
+let currentMarker= null;
 
 if (navigator.xr) {
 log("true");
@@ -263,8 +264,6 @@ log("event added");
 }
 });
 }
-
-let currentMarker= null;
 
 /*for (let j of data) {
 
