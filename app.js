@@ -133,8 +133,10 @@ log("model received");
 //renderer.domElement.style.display= "block";
 //renderer.domElement.style.zIndex= "10000";
 
-let fallBtn= buttonCreate();
-log("button created faalBtn");
+let fallBtn= document.createElement("button");
+fallBtn.innerText= "View in 2D";
+document.body.appendChild(fallBtn);
+log("button created fallBtn");
 fallBtn.addEventListener("click",async () => {
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
