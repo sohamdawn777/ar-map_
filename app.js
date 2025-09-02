@@ -114,8 +114,8 @@ log(`Error: ${e}`);
 
 //modelLoad();
 
-renderer.domElement.style.display= "block";
-renderer.domElement.style.zIndex= "10000";
+//renderer.domElement.style.display= "block";
+//renderer.domElement.style.zIndex= "10000";
 
 //const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
