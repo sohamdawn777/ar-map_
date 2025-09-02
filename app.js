@@ -222,7 +222,7 @@ renderer.render(scene, camera);
 });
 log("event added");
 }
-}
+});
 }
 
 let currentMarker= null;
