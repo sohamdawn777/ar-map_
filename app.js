@@ -179,7 +179,6 @@ let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
 log("xr support possible");
-try {
 arBtn= document.createElement("button");
 log("arBtn ka bhulla")
 arBtn.id="AR";
