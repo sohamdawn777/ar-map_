@@ -2,6 +2,22 @@ window.addEventListener("DOMContentLoaded",() => {
 
 let loadedModel;
 
+function log(msg) {
+  const logBox = document.getElementById("log") || (() => {
+    const div = document.createElement("div");
+    div.id = "log";
+    div.style.position = "fixed";
+    div.style.bottom = "0";
+    div.style.left = "0";
+    div.style.background = "white";
+    div.style.padding = "10px";
+    div.style.zIndex = "9999";
+    document.body.appendChild(div);
+    return div;
+  })();
+  logBox.innerHTML += `<div>${msg}</div>`;
+}
+
 function onLoad(gltf) {
 
 document.getElementById("loader-element").style.visibility= "hidden";
@@ -148,6 +164,7 @@ let arBtn;
 let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
+log("xr support possible");
 arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
@@ -156,12 +173,15 @@ arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
+log("arBtn added");
 arBtn.addEventListener("click", modelLoad);
+log("eventendra added");
 
 renderer.xr.addEventListener("sessionstart", setupXR);
 }
 
 else {
+log("reached");
 fallBtn= document.createElement("button");
 fallBtn.id="fall";
 fallBtn.innerText="View in AR";
@@ -171,7 +191,9 @@ fallBtn.style.right= "20px";
 fallBtn.style.zIndex= 9999;
 fallBtn.style.visibility= "hidden";
 document.body.appendChild(fallBtn);
+log("fallBtn added");
 fallBtn.addEventListener("click", modelLoad);
+log("event added");
 
 /*if (loadedModel && loadedModel.scene) {
 camera.position.set(0, 1.6, 3);
@@ -199,12 +221,14 @@ const marker = L.marker([j.lat, j.lon], {
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 if (arBtn) {
+log("callu");
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
 });
 }
 else if (fallBtn) {
+log("called");
 marker.on("popupopen", () => {
 document.querySelector("#fall").style.visibility= "visible";
 currentMarker= marker;
