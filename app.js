@@ -42,8 +42,8 @@ document.getElementById("progress-bar").style.visibility= "visible";
 //log(`xhr.loaded: ${xhr.loaded}`);
 //log(`xhr.total: ${xhr.total}`);
 
-log(document.getElementById("progress-bar"));
-log(document.getElementById("loader-element"));
+//log(document.getElementById("progress-bar"));
+//log(document.getElementById("loader-element"));
 
 /*let progressBar= document.getElementById("progress-bar");
 progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";*/
@@ -62,7 +62,7 @@ err.innerHTML=`An Error Occurred: ${error}.`;
 function modelLoad() {
 
 //log("model loading initiated");
-log(currentMarker.options.modelUrl);
+//log(currentMarker.options.modelUrl);
 
 return new Promise((resolve, reject) => {
 
@@ -125,7 +125,7 @@ log("session requested");
 
 catch (e) {
 
-log(e);
+//log(e);
 const Model= await modelLoad();
 
 //log("model received");
