@@ -69,9 +69,8 @@ const marker = L.marker([j.lat, j.lon], {
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 if (btn) {
-log("called");
 marker.on("popupopen", () => {
-fallBtn.style.visibility= "visible";
+btn.style.visibility= "visible";
 currentMarker= marker;
 });
 }
