@@ -80,6 +80,19 @@ map.fitBounds(bounds);
 
 }
 
+function buttonCreate (btn) {
+
+btn= document.createElement("button");
+btn.innerText= "View in AR";
+btn.style.position= "fixed";
+btn.style.bottom= "20px";
+btn.style.right= "20px";
+btn.style.zIndex= 9999;
+btn.style.visibility= "hidden";
+document.body.appendChild(btn);
+
+}
+
 async function setupXR(event) {
 
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
@@ -181,48 +194,13 @@ log("true");
 navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
 if (supported) {
 log(`supported: ${supported}`);
-arBtn= document.createElement("button");
-arBtn.id="AR";
-arBtn.style.position= "fixed";
-arBtn.style.bottom= "20px";
-arBtn.style.right= "20px";
-arBtn.style.zIndex= 9999;
-arBtn.style.visibility= "hidden";
-document.body.appendChild(arBtn);
+buttonCreate(arBtn);
 arBtn.addEventListener("click", setupXR);
-
-/*for (let j of data) {
-
-const marker = L.marker([j.lat, j.lon], { 
-    icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
-    title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
-
-marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
-
-if (arBtn) {
-marker.on("popupopen", () => {
-arBtn.style.visibility= "visible";
-currentMarker= marker;
-});
-}
-}
-const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
-map.fitBounds(bounds);*/
-
 mapMarker(arBtn, data);
 }
 else {
 log("immersive ar not supported");
-fallBtn= document.createElement("button");
-fallBtn.id="fall";
-fallBtn.innerText="View in AR";
-fallBtn.style.position= "fixed";
-fallBtn.style.bottom= "20px";
-fallBtn.style.right= "20px";
-fallBtn.style.zIndex= 9999;
-fallBtn.style.visibility= "hidden";
-document.body.appendChild(fallBtn);
-log("fallBtn added");
+buttonCreate(fallBtn);
 fallBtn.addEventListener("click", () => {
 log("model loading INITIATED");
 
@@ -239,28 +217,7 @@ renderer.render(scene, camera);
 });
 }
 });
-
-/*for (let j of data) {
-
-const marker = L.marker([j.lat, j.lon], { 
-    icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
-    title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
-
-marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
-
-if (fallBtn) {
-log("called");
-marker.on("popupopen", () => {
-fallBtn.style.visibility= "visible";
-currentMarker= marker;
-});
-}
-}
-const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
-map.fitBounds(bounds);*/
-
 mapMarker(fallBtn, data);
-log("event added");
 }
 });
 }
