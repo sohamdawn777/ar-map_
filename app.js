@@ -239,14 +239,14 @@ marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, a
 
 if (arBtn) {
 marker.on("popupopen", () => {
-document.querySelector("#AR").style.visibility= "visible";
+arBtn.style.visibility= "visible";
 currentMarker= marker;
 });
 }
 else if (fallBtn) {
 log("called");
 marker.on("popupopen", () => {
-document.querySelector("#fall").style.visibility= "visible";
+fallBtn.style.visibility= "visible";
 currentMarker= marker;
 });
 }
