@@ -73,6 +73,10 @@ if (loadedModel && loadedModel.scene) {
 const position= pose.transform.position;
 loadedModel.scene.position.set(position.x, position.y, position.z);
 anchorStatus= true;
+
+arMessage.textContent= "Experience AR!";
+setTimeout(() => {
+arMessage.textContent="";}, 3000);
 }
 
 else {
@@ -81,10 +85,6 @@ setTimeout(() => {
 arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";
 }, 3000);
 }
-
-arMessage.textContent= "Experience AR!";
-setTimeout(() => {
-arMessage.textContent="";}, 3000);
 }
 else {
 }
