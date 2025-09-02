@@ -75,7 +75,7 @@ xrSession.addAnchor(pose, space);
 if (loadedModel && loadedModel.scene) {
 const position= pose.transform.position;
 loadedModel.scene.position.set(position.x, position.y, position.z);
-scene.add(loadedModel);
+scene.add(loadedModel.scene);
 anchorStatus= true;
 
 arMessage.textContent= "Experience AR!";
@@ -104,8 +104,8 @@ if (arMessage && arMessage.parentNode) {
 document.body.removeChild(arMessage);
 }
 anchorStatus= false;
-if (gltf && gltf.scene && scene.children.includes(gltf.scene)) {
-scene.remove(gltf.scene);
+if (loadedModel && loadedModel.scene && scene.children.includes(loadedModel.scene)) {
+scene.remove(loadedModel.scene);
 }
 renderer.style.display= "none";
 renderer.style.zIndex= "0";
@@ -154,6 +154,8 @@ arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
 arBtn.addEventListener("click", modelLoad);
+
+renderer.xr.addEventListener("sessionstart", setupXR);
 }
 
 else {
@@ -167,9 +169,16 @@ fallBtn.style.zIndex= 9999;
 fallBtn.style.visibility= "hidden";
 document.body.appendChild(fallBtn);
 fallBtn.addEventListener("click", modelLoad);
-}
 
-renderer.xr.addEventListener("sessionstart", setupXR);
+if (loadedModel && loadedModel.scene) {
+scene.add(loadedModel.scene);
+renderer.style.display= "block";
+renderer.style.zIndex= "10000";
+renderer.animationLoop(() => {
+renderer.render(scene, camera);
+});
+}
+}
 
 let currentMarker= null;
 
