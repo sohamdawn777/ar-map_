@@ -117,7 +117,7 @@ const fallBtn3= document.getElementById("cancel");
 
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
-const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, audio: false});
+const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
 
