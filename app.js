@@ -120,10 +120,11 @@ renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
 
 let fallBtn= buttonCreate();
-fallBtn.addEventListener("click",() => {
-const realCam= navigator.getUserMedia({video: true, audio: false});
+fallBtn.addEventListener("click",async () => {
+const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
-vid.src= realCam;
+vid.srcObject= realCam;
+vid.play();
 
 });
 
@@ -133,11 +134,11 @@ Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
 
-renderer.domElement.style.display= "block";
+/*renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
-});
+});*/
 }
 }
 
