@@ -22,8 +22,8 @@ function onLoad(gltf) {
 
 log("model loaded");
 
-document.getElementById("loader-element").style.visibility= "hidden";
-document.getElementById("progress-bar").style.visibility= "hidden";
+//document.getElementById("loader-element").style.visibility= "hidden";
+//document.getElementById("progress-bar").style.visibility= "hidden";
 
 //gltf.scene.position.set(0,0,0);
 //gltf.scene.scale.set(1,1,1);
@@ -45,8 +45,8 @@ log(`xhr.total: ${xhr.total}`);
 log(document.getElementById("progress-bar"));
 log(document.getElementById("loader-element"));
 
-let progressBar= document.getElementById("progress-bar");
-progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
+/*let progressBar= document.getElementById("progress-bar");
+progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";*/
 
 }
 
