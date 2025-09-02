@@ -31,8 +31,8 @@ renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
 
-/*const arBtn= ARButton.createButton(renderer);
-arBtn.id="AR";
+const arBtn= ARButton.createButton(renderer);
+/*arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
 arBtn.style.right= "20px";
