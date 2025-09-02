@@ -193,6 +193,24 @@ arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
 arBtn.addEventListener("click", setupXR);
+
+for (let j of data) {
+
+const marker = L.marker([j.lat, j.lon], { 
+    icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
+    title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
+
+marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
+
+if (arBtn) {
+marker.on("popupopen", () => {
+arBtn.style.visibility= "visible";
+currentMarker= marker;
+});
+}
+}
+const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
+map.fitBounds(bounds);
 }
 else {
 log("immersive ar not supported");
@@ -222,6 +240,25 @@ renderer.render(scene, camera);
 });
 }
 });
+for (let j of data) {
+
+const marker = L.marker([j.lat, j.lon], { 
+    icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
+    title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
+
+marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
+
+if (fallBtn) {
+log("called");
+marker.on("popupopen", () => {
+fallBtn.style.visibility= "visible";
+currentMarker= marker;
+});
+}
+}
+const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
+map.fitBounds(bounds);
+
 log("event added");
 }
 });
@@ -229,13 +266,11 @@ log("event added");
 
 let currentMarker= null;
 
-for (let j of data) {
+/*for (let j of data) {
 
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
     title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
-
-  L.circle([j.lat,j.lon], { radius: 15, color: "black", fillColor: "blue", fillOpacity: 0.2 }).addTo(map);
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
@@ -254,5 +289,5 @@ currentMarker= marker;
 }
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
-map.fitBounds(bounds);
+map.fitBounds(bounds);*/
 });
