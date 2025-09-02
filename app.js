@@ -165,7 +165,7 @@ let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
 log("xr support possible");
-arBtn= ARButton.createButton(renderer);
+arBtn= THREE.ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
