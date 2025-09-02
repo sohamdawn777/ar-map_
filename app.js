@@ -119,7 +119,11 @@ const Model= await modelLoad();
 renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
 
+let fallBtn= buttonCreate();
+fallBtn.addEventListener("click",() => {
 navigator.getUserMedia({video: true, audio: false});
+
+});
 
 if (Model && Model.scene) {
 Model.scene.position.set(0,0,0);
