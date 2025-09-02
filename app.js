@@ -121,7 +121,9 @@ renderer.domElement.style.zIndex= "10000";
 
 let fallBtn= buttonCreate();
 fallBtn.addEventListener("click",() => {
-navigator.getUserMedia({video: true, audio: false});
+const realCam= navigator.getUserMedia({video: true, audio: false});
+const vid= document.createElement("video");
+vid.src= realCam;
 
 });
 
