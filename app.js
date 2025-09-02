@@ -144,8 +144,8 @@ renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
 
-const arBtn;
-const fallBtn;
+let arBtn;
+let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
 arBtn= ARButton.createButton(renderer);
