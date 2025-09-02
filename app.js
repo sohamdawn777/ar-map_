@@ -140,7 +140,7 @@ document.body.appendChild(fallBtn);
 fallBtn.addEventListener("click", modelLoad);
 }
 
-//renderer.xr.addEventListener("sessionstart", setupXR);
+renderer.xr.addEventListener("sessionstart", setupXR);
 
 let currentMarker= null;
 
