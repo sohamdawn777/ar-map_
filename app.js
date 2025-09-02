@@ -144,28 +144,21 @@ renderer.style.zIndex= "0";
 
 
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, minZoom: 1 });
-log("map created");
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
-log("tiles added");
 
 let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model1.glb"}, {lat: 22.5999666, lon: 88.3729349, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model2.glb"}, {lat: 22.56492395, lon: 88.35405545738757, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model3.glb"}];
-log(data.length);
 
 const scene= new THREE.Scene();
-log("scene initialised");
 
 const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 10);
-log("camera initialised");
 
 const ambLight= new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambLight);
-log("ambient light added");
 
 const dirLight= new THREE.DirectionalLight(0xffffff, 0.8);
 dirLight.position.set(5, 10, 5);
 scene.add(dirLight);
-log("directional light added");
 
 const renderer= new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -176,32 +169,24 @@ renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
 renderer.domElement.style.border = "2px solid red";
 document.body.appendChild(renderer.domElement);
-log("renderer initailised");
 
 renderer.xr.enabled= true;
-log("renderer enabled");
 
 const glbLoader= new THREE.GLTFLoader();
-log("loader initialised");
 
 let arBtn;
 let fallBtn;
 
 if (navigator.xr && navigator.xr.isSessionSupported) {
-log("xr support possible");
 arBtn= document.createElement("button");
-log("arBtn ka bhulla")
 arBtn.id="AR";
-log("chaliye");
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
 arBtn.style.right= "20px";
 arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
-log("arBtn added");
 arBtn.addEventListener("click", setupXR);
-log("eventendra added");
 
 //renderer.xr.addEventListener("sessionstart", setupXR);
 }
@@ -247,7 +232,6 @@ const marker = L.marker([j.lat, j.lon], {
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 if (arBtn) {
-log("callu");
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
