@@ -242,7 +242,7 @@ renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
 renderer.domElement.style.width= "100%";
-renderer.domElement.style.height= "100vh";
+renderer.domElement.style.height= "100%";
 renderer.domElement.style.pointerEvents= "none";
 document.body.appendChild(renderer.domElement);
 
