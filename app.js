@@ -144,8 +144,11 @@ renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
 
+const arBtn;
+const fallBtn;
+
 if (navigator.xr && navigator.xr.isSessionSupported) {
-const arBtn= ARButton.createButton(renderer);
+arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
@@ -159,7 +162,7 @@ renderer.xr.addEventListener("sessionstart", setupXR);
 }
 
 else {
-const fallBtn= document.createElement("button");
+fallBtn= document.createElement("button");
 fallBtn.id="fall";
 fallBtn.innerText="View in AR";
 fallBtn.style.position= "fixed";
