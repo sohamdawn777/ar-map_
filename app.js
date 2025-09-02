@@ -36,6 +36,9 @@ glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
 
 async function setupXR(event) {
 
+renderer.style.visibility= "block";
+renderer.style.zIndex= "10000";
+
 const arMessage = document.createElement("div");
 arMessage.id = "ar-message";
 arMessage.textContent = "Tap on a valid surface (e.g: Table, Chair etc.).";
@@ -97,7 +100,15 @@ arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";}, 300
 }
 });
 xrSession.addEventListener("end",() => {
-
+if (arMessage && arMessage.parentNode) {
+document.body.removeChild(arMessage);
+}
+anchorStatus= false;
+if (gltf && gltf.scene && scene.children.includes(gltf.scene)) {
+scene.remove(gltf.scene);
+}
+renderer.style.display= "none";
+renderer.style.zIndex= "0";
 });
 }
 
