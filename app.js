@@ -108,10 +108,6 @@ catch (e) {
 
 const Model= await modelLoad();
 
-log("model received");
-
-//log("button created fallBtn");
-
 document.getElementById("modal").style.display= "block";
 
 const fallBtn1= document.getElementById("modal2D");
@@ -120,7 +116,7 @@ const fallBtn3= document.getElementById("cancel");
 
 
 fallBtn1.addEventListener("click",async () => {
-document.getElementById("modal").display= "none";
+document.getElementById("modal").style.display= "none";
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
