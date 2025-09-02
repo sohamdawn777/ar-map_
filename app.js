@@ -117,7 +117,7 @@ const fallBtn3= document.getElementById("cancel");
 
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
-const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
 
@@ -134,11 +134,6 @@ renderer.domElement.style.zIndex= "10000";
 renderer.setClearColor(0x000000, 0);
 renderer.domElement.style.opacity= "1";
 
-
-renderer.setAnimationLoop(() => {
-renderer.render(scene, camera);
-});
-
 vid.setAttribute("autoplay", true);
 vid.setAttribute("muted", true);
 vid.setAttribute("playsinline", true);
@@ -146,11 +141,16 @@ vid.style.position = "absolute";
 vid.style.top = "0";
 vid.style.left = "0";
 vid.style.width = "100%";
-vid.style.height = "100%";
-vid.style.zIndex = "9999"; // Behind everything
+vid.style.height = "100vh";
+vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
 
+if (vid.readyState>=2) {
+renderer.setAnimationLoop(() => {
+renderer.render(scene, camera);
+});
+}
 }
 });
 
@@ -240,9 +240,8 @@ renderer.domElement.style.top = "0";
 renderer.domElement.style.left = "0";
 renderer.domElement.style.zIndex = "0";
 renderer.domElement.style.width= "100%";
-renderer.domElement.style.height= "100%";
+renderer.domElement.style.height= "100vh";
 renderer.domElement.style.pointerEvents= "none";
-renderer.domElement.style.border = "2px solid red";
 document.body.appendChild(renderer.domElement);
 
 renderer.xr.enabled= true;
