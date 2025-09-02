@@ -58,6 +58,29 @@ glbLoader.load(currentMarker.options.modelUrl, onLoad, onProgress, onError);
 
 }
 
+function mapMarker (btn, data) {
+
+for (let j of data) {
+
+const marker = L.marker([j.lat, j.lon], { 
+    icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
+    title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
+
+marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
+
+if (btn) {
+log("called");
+marker.on("popupopen", () => {
+fallBtn.style.visibility= "visible";
+currentMarker= marker;
+});
+}
+}
+const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
+map.fitBounds(bounds);
+
+}
+
 async function setupXR(event) {
 
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
@@ -169,7 +192,7 @@ arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
 arBtn.addEventListener("click", setupXR);
 
-for (let j of data) {
+/*for (let j of data) {
 
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
@@ -185,7 +208,9 @@ currentMarker= marker;
 }
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
-map.fitBounds(bounds);
+map.fitBounds(bounds);*/
+
+mapMarker(arBtn, data);
 }
 else {
 log("immersive ar not supported");
@@ -215,7 +240,7 @@ renderer.render(scene, camera);
 });
 }
 });
-for (let j of data) {
+*/for (let j of data) {
 
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
@@ -232,8 +257,9 @@ currentMarker= marker;
 }
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
-map.fitBounds(bounds);
+map.fitBounds(bounds);*/
 
+mapMarker(fallBtn, data);
 log("event added");
 }
 });
