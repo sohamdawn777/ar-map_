@@ -213,8 +213,8 @@ camera.position.set(0, 1.6, 3);
 
 scene.add(loadedModel.scene);
 
-renderer.style.display= "block";
-renderer.style.zIndex= "10000";
+renderer.domElement.style.display= "block";
+renderer.domElement.style.zIndex= "10000";
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
