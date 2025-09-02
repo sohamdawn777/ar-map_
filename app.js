@@ -183,7 +183,7 @@ if (navigator.xr) {
 log("true");
 navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
 if (supported) {
-log(supported);
+log(`supported: ${supported}`);
 arBtn= document.createElement("button");
 arBtn.id="AR";
 arBtn.style.position= "fixed";
