@@ -130,6 +130,7 @@ arBtn.addEventListener("click", modelLoad);
 else {
 const fallBtn= document.createElement("button");
 fallBtn.id="fall";
+fallBtn.innerText="View in AR";
 fallBtn.style.position= "fixed";
 fallBtn.style.bottom= "20px";
 fallBtn.style.right= "20px";
