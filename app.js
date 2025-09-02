@@ -66,8 +66,8 @@ log("session requested");
 
 modelLoad();
 
-renderer.style.display= "block";
-renderer.style.zIndex= "10000";
+renderer.domElement.style.display= "block";
+renderer.domElement.style.zIndex= "10000";
 
 /*const arMessage = document.createElement("div");
 arMessage.id = "ar-message";
@@ -139,8 +139,8 @@ anchorStatus= false;
 if (loadedModel && loadedModel.scene && scene.children.includes(loadedModel.scene)) {
 scene.remove(loadedModel.scene);
 }
-renderer.style.display= "none";
-renderer.style.zIndex= "0";
+renderer.domElement.style.display= "none";
+renderer.domElement.style.zIndex= "0";
 });
 }
 
