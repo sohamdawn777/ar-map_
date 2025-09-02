@@ -29,9 +29,9 @@ document.body.appendChild(renderer.domElement);
 
 renderer.xr.enabled= true;
 
-//const glbLoader= new THREE.GLTFLoader();
+const glbLoader= new THREE.GLTFLoader();
 
-/*const arBtn= ARButton.createButton(renderer);
+const arBtn= ARButton.createButton(renderer);
 arBtn.id="AR";
 arBtn.style.position= "fixed";
 arBtn.style.bottom= "20px";
@@ -55,12 +55,12 @@ const marker = L.marker([j.lat, j.lon], {
 
 marker.bindPopup(`<p>This is sample text.</p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-/*if (arBtn) {
+if (arBtn) {
 marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
 });
-}*/
+}
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
