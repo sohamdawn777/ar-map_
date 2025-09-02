@@ -7,8 +7,8 @@ let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubuserconten
 
 const scene= new THREE.Scene();
 
-const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-scene.add(camera);
+const camera= new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 10);
+//scene.add(camera);
 
 const ambLight= new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambLight);
