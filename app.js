@@ -1,13 +1,16 @@
 window.addEventListener("DOMContentLoaded",() => {
 
+let loadedModel;
+
 function onLoad(gltf) {
 
 document.getElementById("loader-element").style.visibility= "hidden";
 document.getElementById("progress-bar").style.visibility= "hidden";
 
-gltf.scene.position.set(0,0,0);
+//gltf.scene.position.set(0,0,0);
 gltf.scene.scale.set(1,1,1);
-scene.add(gltf.scene);
+//scene.add(gltf.scene);
+loadedModel= gltf;
 
 }
 
@@ -65,7 +68,19 @@ if (result.length>0 && anchorStatus=== false) {
 const pose= result[0].getPose(space);
 
 xrSession.addAnchor(pose, space);
+
+if (loadedModel && loadedModel.scene) {
+const position= pose.transform.position;
+loadedModel.scene.position.set(position.x, position.y, position.z);
 anchorStatus= true;
+}
+
+else {
+arMessage.textContent= "Model not loaded yet";
+setTimeout(() => {
+arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";
+}, 3000);
+}
 
 arMessage.textContent= "Experience AR!";
 setTimeout(() => {
