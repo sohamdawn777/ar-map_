@@ -54,7 +54,7 @@ async function setupXR(event) {
 
 modelLoad();
 
-navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
+const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 renderer.style.visibility= "block";
 renderer.style.zIndex= "10000";
@@ -74,7 +74,7 @@ arMessage.style.fontFamily = "sans-serif";
 arMessage.style.zIndex = 9999;
 document.body.appendChild(arMessage);
 
-const xrSession= renderer.xr.getSession();
+//const xrSession= renderer.xr.getSession();
 const space= await xrSession.requestReferenceSpace("local-floor");
 const viewerSpace= await xrSession.requestReferenceSpace("viewer");
 const source= await xrSession.requestHitTestSource({space: viewerSpace });
@@ -180,12 +180,8 @@ let fallBtn;
 if (navigator.xr && navigator.xr.isSessionSupported) {
 log("xr support possible");
 try {
-arBtn= ARButton.createButton(renderer);
-log("arBtn ka bhulla");
-}
-catch (e) {
-log(e);
-}
+arBtn= document.createElement("button");
+log("arBtn ka bhulla")
 arBtn.id="AR";
 log("chaliye");
 arBtn.style.position= "fixed";
@@ -195,10 +191,10 @@ arBtn.style.zIndex= 9999;
 arBtn.style.visibility= "hidden";
 document.body.appendChild(arBtn);
 log("arBtn added");
-arBtn.addEventListener("click", modelLoad);
+arBtn.addEventListener("click", setupXR);
 log("eventendra added");
 
-renderer.xr.addEventListener("sessionstart", setupXR);
+//renderer.xr.addEventListener("sessionstart", setupXR);
 }
 
 else {
