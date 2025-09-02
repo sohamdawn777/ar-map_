@@ -66,7 +66,8 @@ log(currentMarker.options.modelUrl);
 
 return new Promise((resolve, reject) => {
 
-glbLoader.load(currentMarker.options.modelUrl, (gltf) => resolve(gltf), onProgress, 
+glbLoader.load(currentMarker.options.modelUrl, (gltf) => {onLoad(gltf);
+resolve(gltf);}, onProgress, 
 (error) => reject(error));
 });
 
@@ -127,10 +128,13 @@ catch (e) {
 log(e);
 const Model= await modelLoad();
 
+log("model received");
+
 //renderer.domElement.style.display= "block";
 //renderer.domElement.style.zIndex= "10000";
 
 let fallBtn= buttonCreate();
+log("button created faalBtn");
 fallBtn.addEventListener("click",async () => {
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
 const vid= document.createElement("video");
