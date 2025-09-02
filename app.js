@@ -95,7 +95,9 @@ setTimeout(() => {
 arMessage.textContent= "Tap on a valid surface (e.g: Table, Chair etc.).";}, 3000);
 }
 });
+xrSession.addEventListener("end",() => {
 
+});
 }
 
 
