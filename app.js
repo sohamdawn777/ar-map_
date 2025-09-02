@@ -1,7 +1,5 @@
 window.addEventListener("DOMContentLoaded",() => {
 
-//let loadedModel;
-
 function log(msg) {
   const logBox = document.getElementById("log") || (() => {
     const div = document.createElement("div");
@@ -20,8 +18,6 @@ function log(msg) {
 
 function onLoad(gltf) {
 
-//log("model loaded");
-
 //document.getElementById("loader-element").style.visibility= "hidden";
 //document.getElementById("progress-bar").style.visibility= "hidden";
 
@@ -34,25 +30,15 @@ function onLoad(gltf) {
 
 function onProgress(xhr) {
 
-//log("model loading on progress");
-
 document.getElementById("loader-element").style.visibility= "visible";
 document.getElementById("progress-bar").style.visibility= "visible";
 
-//log(`xhr.loaded: ${xhr.loaded}`);
-//log(`xhr.total: ${xhr.total}`);
-
-//log(document.getElementById("progress-bar"));
-//log(document.getElementById("loader-element"));
-
-/*let progressBar= document.getElementById("progress-bar");
-progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";*/
+let progressBar= document.getElementById("progress-bar");
+progressBar.style.width= ((xhr.loaded/xhr.total)*100).toFixed(2) + "%";
 
 }
 
 function onError(error) {
-
-log("error is coming");
 
 let err= document.getElementById("error");
 err.innerHTML=`An Error Occurred: ${error}.`;
@@ -60,9 +46,6 @@ err.innerHTML=`An Error Occurred: ${error}.`;
 }
 
 function modelLoad() {
-
-//log("model loading initiated");
-//log(currentMarker.options.modelUrl);
 
 return new Promise((resolve, reject) => {
 
@@ -115,8 +98,6 @@ return btn;
 
 async function setupXR(event) {
 
-//log("setupXR triggered");
-
 try {
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
@@ -125,20 +106,14 @@ log("session requested");
 
 catch (e) {
 
-//log(e);
+log(e);
 const Model= await modelLoad();
 
-//log("model received");
+log("model received");
 
 //renderer.domElement.style.display= "block";
 //renderer.domElement.style.zIndex= "10000";
 
-let fallBtn= document.createElement("button");
-fallBtn.innerText= "View in 2D";
-fallBtn.style.zIndex= 9999;
-fallBtn.style.top= "20px";
-fallBtn.style.right= "20px";
-document.body.appendChild(fallBtn);
 //log("button created fallBtn");
 fallBtn.addEventListener("click",async () => {
 const realCam= await navigator.mediaDevices.getUserMedia({video: true, audio: false});
