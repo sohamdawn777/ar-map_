@@ -146,10 +146,12 @@ vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
 
+vid.onloadeddata = () => {
 if (vid.readyState>=2) {
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
+}
 }
 }
 });
