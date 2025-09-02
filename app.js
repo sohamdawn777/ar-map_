@@ -56,6 +56,7 @@ err.innerHTML=`An Error Occurred: ${error}.`;
 function modelLoad() {
 
 log("model loading initiated");
+log(currentMarker.options.modelUrl);
 
 return new Promise((resolve, reject) => {
 
