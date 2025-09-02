@@ -60,8 +60,8 @@ marker.on("popupopen", () => {
 document.querySelector("#AR").style.visibility= "visible";
 currentMarker= marker;
 });
-}
 }*/
+}
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 });
