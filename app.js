@@ -150,7 +150,7 @@ vid.play();
 //renderer.domElement.addEventListener("resize", reSize);
 
 
-const rayCast= new THREE.Raycaster();
+/*const rayCast= new THREE.Raycaster();
 
 const pointer= rayCast.vector2();
 pointer.x= (event.clientX/window.innerWidth)*2-1;
@@ -163,7 +163,7 @@ const intersects= rayCast.intersectObject(Model, true);
 if (intersects.length>0) {
 const point= intersects[0].object;
 
-}
+}*/
 
 
 vid.onloadeddata = () => {
