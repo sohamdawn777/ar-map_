@@ -134,7 +134,7 @@ vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
 
-if (Model && Model.scene) {
+/*if (Model && Model.scene) {
 Model.scene.position.set(0,1.2,0);
 Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
@@ -155,7 +155,7 @@ renderer.render(scene, camera);
 });
 }
 }
-}
+}*/
 }
 catch (err) {
 log(err);
@@ -175,29 +175,6 @@ vid.style.height = "100%";
 vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
-
-if (Model && Model.scene) {
-Model.scene.position.set(0,1.2,0);
-Model.scene.scale.set(1,1,1);
-scene.add(Model.scene);
-camera.position.set(0, 1.6, 3);
-camera.lookAt(0,1.2,0);
-
-renderer.domElement.style.position= "absolute";
-renderer.domElement.style.pointerEvents= "auto";
-renderer.domElement.style.display= "block";
-renderer.domElement.style.zIndex= "10000";
-renderer.setClearColor(0x000000, 0);
-renderer.domElement.style.opacity= "1";
-
-vid.onloadeddata = () => {
-if (vid.readyState>=2) {
-renderer.setAnimationLoop(() => {
-renderer.render(scene, camera);
-});
-}
-}
-}
 }
 
 //renderer.domElement.addEventListener("resize", reSize);
@@ -218,7 +195,6 @@ const point= intersects[0].object;
 
 }*/
 
-}
 });
 
 fallBtn2.addEventListener("click", () => {
