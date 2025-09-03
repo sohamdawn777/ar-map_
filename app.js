@@ -134,7 +134,7 @@ vid.style.zIndex = "9999";
 document.body.appendChild(vid);
 vid.play();
 
-/*if (Model && Model.scene) {
+if (Model && Model.scene) {
 Model.scene.position.set(0,1.2,0);
 Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
@@ -155,7 +155,7 @@ renderer.render(scene, camera);
 });
 }
 }
-}*/
+}
 }
 catch (err) {
 log(err);
