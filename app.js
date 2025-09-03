@@ -117,9 +117,18 @@ const fallBtn3= document.getElementById("cancel");
 
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
+try {
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
+}
+catch (err) {
+log(err);
+
+const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "user"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
+const vid= document.createElement("video");
+vid.srcObject= realCam;
+}
 
 if (Model && Model.scene) {
 Model.scene.position.set(0,1.2,0);
