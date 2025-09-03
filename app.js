@@ -121,6 +121,18 @@ try {
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
+
+vid.setAttribute("autoplay", true);
+vid.setAttribute("muted", true);
+vid.setAttribute("playsinline", true);
+vid.style.position = "fixed";
+vid.style.top = "0";
+vid.style.left = "0";
+vid.style.width = "100%";
+vid.style.height = "100%";
+vid.style.zIndex = "9999";
+document.body.appendChild(vid);
+vid.play();
 }
 catch (err) {
 log(err);
@@ -128,6 +140,18 @@ log(err);
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "user"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
 vid.srcObject= realCam;
+
+vid.setAttribute("autoplay", true);
+vid.setAttribute("muted", true);
+vid.setAttribute("playsinline", true);
+vid.style.position = "fixed";
+vid.style.top = "0";
+vid.style.left = "0";
+vid.style.width = "100%";
+vid.style.height = "100%";
+vid.style.zIndex = "9999";
+document.body.appendChild(vid);
+vid.play();
 }
 
 if (Model && Model.scene) {
@@ -143,18 +167,6 @@ renderer.domElement.style.display= "block";
 renderer.domElement.style.zIndex= "10000";
 renderer.setClearColor(0x000000, 0);
 renderer.domElement.style.opacity= "1";
-
-vid.setAttribute("autoplay", true);
-vid.setAttribute("muted", true);
-vid.setAttribute("playsinline", true);
-vid.style.position = "fixed";
-vid.style.top = "0";
-vid.style.left = "0";
-vid.style.width = "100%";
-vid.style.height = "100%";
-vid.style.zIndex = "9999";
-document.body.appendChild(vid);
-vid.play();
 
 //renderer.domElement.addEventListener("resize", reSize);
 
