@@ -30,7 +30,7 @@ LiveLong= liveLng;
 }
 
 function errFetch(error) {
-log(`An error occured: ${error}`);
+log(`An error occured: ${error.message}`);
 }
 
 function mapMarker (data) {
