@@ -117,6 +117,15 @@ const fallBtn3= document.getElementById("cancel");
 
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
+
+const rayCaster= new THREE.Raycaster();
+
+const pointer= new THREE.vector2();
+pointer.x= (event.clientX/window.innerWidth)*2-1;
+pointer.y= -(event.clientY/window.innerHeight)*2+1;
+
+rayCaster.setFromCamera(pointer, camera);
+
 try {
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
@@ -135,11 +144,18 @@ document.body.appendChild(vid);
 vid.play();
 
 if (Model && Model.scene) {
-Model.scene.position.set(0,1.2,0);
+
+const intersectS= rayCaster.intersectObject(renderer.domElement, true);
+
+if (intersectS.length>0) {
+const hitPoinT= intersectS[0].point;
+Model.scene.position.set(hitPoinT.x, hitPoinT.y, hitPoinT.z);
 Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
-camera.lookAt(0,1.2,0);
+camera.lookAt(hitPoinT.x,hitPoinT.y,hitPoinT.z);
+}
+//Model.scene.position.set(0,1.2,0);
 
 renderer.domElement.style.position= "absolute";
 renderer.domElement.style.pointerEvents= "auto";
@@ -159,15 +175,6 @@ renderer.render(scene, camera);
 }
 catch (err) {
 log(err);
-
-const rayCaster= new THREE.Raycaster();
-
-const pointer= new THREE.vector2();
-pointer.x= (event.clientX/window.innerWidth)*2-1;
-pointer.y= -(event.clientY/window.innerHeight)*2+1;
-
-rayCaster.setFromCamera(pointer, camera);
-
 
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "user"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
