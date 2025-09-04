@@ -20,7 +20,7 @@ function log(msg) {
 }
 
 function getLocation() {
-return new Promise((reject, resolve) => {
+return new Promise((resolve, reject) => {
 navigator.geolocation
 getCurrentPosition(
 (position) => resolve(position),
@@ -29,7 +29,7 @@ getCurrentPosition(
 });
 }
 
-function mapMarker (data,map) {
+function mapMarker (data,map,lati,longi) {
 for (let j of data) {
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
@@ -40,7 +40,7 @@ marker.bindPopup(`<h3>${j.place}</h3>
   <a href="${j.link}" target="_blank">Click here</a></p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 marker.on("popupopen", () => {
-routingControl.setWaypoints([L.latLng(coordinates.coords.latitude, coordinates.coords.longitude), L.latLng(j.lat, j.lon)]);
+routingControl.setWaypoints([L.latLng(lati, longi), L.latLng(j.lat, j.lon)]);
 });
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
@@ -57,7 +57,7 @@ fetchBtn.style.transform = "translateX(-50%)";
 fetchBtn.style.zIndex = 9999;
 document.body.appendChild(fetchBtn);
 
-fetchBtn.addEventListener("click", () => {
+fetchBtn.addEventListener("click", async () => {
 const coordinates= await getLocation();
 document.body.removeChild(fetchBtn);
 
@@ -72,7 +72,7 @@ let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https:/
 
 const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
-mapMarker(data,map);
+mapMarker(data,map,coordinates.coords.latitude,coordinates.coords.longitude);
 });
 }
 
