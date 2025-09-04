@@ -65,7 +65,11 @@ fetchBtn.addEventListener("click", () => {
 navigator.geolocation.getCurrentPosition(liveLoc, errFetch);
 document.body.removeChild(fetchBtn);
 
+log(LiveLat);
+log(LiveLong);
+
 if (LiveLat && LiveLong) {
+log("pallu");
 const map= L.map("map", { center: [LiveLat, LiveLong], zoom: 19, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
