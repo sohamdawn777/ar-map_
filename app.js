@@ -90,11 +90,21 @@ window.addEventListener("DOMContentLoaded", () => {
         router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg"),
       }).addTo(map);
 
-      let data = [
+      /*let data = [
         { lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://sohamdawn777.github.io/ar-map_/NabinPally.html" },
         { lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://sohamdawn777.github.io/ar-map_/BidhanSarani.html" },
         { lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://sohamdawn777.github.io/ar-map_/LeninSarani.html" },
-      ];
+      ];*/
+
+let data = [
+  { lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://sohamdawn777.github.io/ar-map_/NabinPally.html" },
+  { lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://sohamdawn777.github.io/ar-map_/BidhanSarani.html" },
+  { lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://sohamdawn777.github.io/ar-map_/LeninSarani.html" },
+  { lat: 22.548695, lon: 88.352875, place: "Park Street", link: "https://sohamdawn777.github.io/ar-map_/ParkStreet.html" },
+  { lat: 22.518356, lon: 88.360134, place: "Lake Gardens Warehouse", link: "https://sohamdawn777.github.io/ar-map_/LakeGardensWarehouse.html" },
+  { lat: 22.533811, lon: 88.380567, place: "Rashbehari Avenue", link: "https://sohamdawn777.github.io/ar-map_/RashbehariAvenue.html" },
+  { lat: 22.495321, lon: 88.345876, place: "New Alipore", link: "https://sohamdawn777.github.io/ar-map_/NewAlipore.html" }
+];
 
       mapMarker(data, map, coordinates.coords.latitude, coordinates.coords.longitude, routingControl);
     } catch (e) {
