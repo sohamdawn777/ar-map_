@@ -64,8 +64,8 @@ document.body.appendChild(fetchBtn);
 fetchBtn.addEventListener("click", () => {
 navigator.geolocation.getCurrentPosition(liveLoc, errFetch);
 document.body.removeChild(fetchBtn);
-});
 
+if (LiveLat && LiveLong) {
 const map= L.map("map", { center: [LiveLat, LiveLong], zoom: 19, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
@@ -75,6 +75,8 @@ let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https:/
 const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
 mapMarker(data);
+}
+});
 }
 
 catch (e) {
