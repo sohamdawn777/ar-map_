@@ -332,7 +332,7 @@ const glbLoader= new THREE.GLTFLoader();
 
 const planeGeometry= new THREE.PlaneGeometry(1000,1000);
 const meshMaterial= new THREE.MeshBasicMaterial({visible: false});
-const mesh= new Mesh(planeGeometry, meshMaterial);
+const mesh= new THREE.Mesh(planeGeometry, meshMaterial);
 
 mesh.rotation.x= -Math.PI/2;
 mesh.position.y= 0;
