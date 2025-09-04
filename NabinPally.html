@@ -4,97 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nabin Pally</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset some default styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* Reset defaults */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffefd5, #ffe4e1); /* subtle warm street vibe */
+    color: #222;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+  }
 
-    .container {
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(5px);
-      padding: 50px 40px;
-      border-radius: 20px;
-      max-width: 800px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      position: relative;
-      overflow: hidden;
-    }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff4500; /* bold graffiti accent */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 
-    h1 {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #ffeb3b;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    }
+  p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    text-align: justify;
+    color: #333;
+    line-height: 1.8;
+    padding: 0 10px;
+  }
 
-    p {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      color: #e0e0e0;
-      text-align: justify;
-      text-indent: 2em;
-    }
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    border-left: 8px solid #ff4500; /* graffiti-style accent */
+    border-right: 8px solid #ff4500;
+    position: relative;
+  }
 
-    /* Graffiti paint splashes as background decoration */
-    .container::before, .container::after {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, #ff3c3c, transparent);
-      opacity: 0.3;
-      border-radius: 50%;
-      z-index: 0;
-    }
+  .container::before, .container::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ff4500;
+    top: -25px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
 
-    .container::before {
-      top: -50px;
-      left: -50px;
-      transform: rotate(45deg);
-    }
+  .container::after {
+    right: -25px;
+    left: auto;
+  }
 
-    .container::after {
-      bottom: -50px;
-      right: -50px;
-      transform: rotate(-30deg);
-    }
-
-    /* Optional: animated underline effect for headings */
-    h1::after {
-      content: '';
-      display: block;
-      width: 50%;
-      height: 4px;
-      background: #ffeb3b;
-      margin: 10px auto 0;
-      border-radius: 2px;
-      animation: slide 1.5s infinite alternate;
-    }
-
-    @keyframes slide {
-      0% { width: 30%; }
-      100% { width: 50%; }
-    }
-  </style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>
 </head>
 <body>
   <div class="container">
