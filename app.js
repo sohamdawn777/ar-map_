@@ -29,6 +29,7 @@ marker.bindPopup(`<h3>${j.place}</h3>
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
+}
 
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, minZoom: 1 });
 
