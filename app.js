@@ -72,9 +72,6 @@ window.addEventListener("DOMContentLoaded", () => {
       const coordinates = await getLocation();
       document.body.removeChild(fetchBtn);
 
-      log(coordinates.coords.latitude);
-      log(coordinates.coords.longitude);
-
       const map = L.map("map", {
         center: [coordinates.coords.latitude, coordinates.coords.longitude],
         zoom: 19,
