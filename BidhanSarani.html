@@ -5,55 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bidhan Sarani</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* Reset defaults */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #d0e7f9, #ffffff); /* intellectual, calming theme */
-      color: #333;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffefd5, #ffe4e1); /* subtle warm street vibe */
+    color: #222;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+  }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #222;
-      text-align: center;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff4500; /* bold graffiti accent */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 
-    p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      text-align: center;
-      color: #333;
-      line-height: 1.8;
-    }
+  p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    text-align: justify;
+    color: #333;
+    line-height: 1.8;
+    padding: 0 10px;
+  }
 
-    .container {
-      background-color: rgba(255,255,255,0.95);
-      padding: 50px 40px;
-      border-radius: 15px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-      text-align: center;
-      animation: fadeIn 1s ease-out;
-    }
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    border-left: 8px solid #ff4500; /* graffiti-style accent */
+    border-right: 8px solid #ff4500;
+    position: relative;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  .container::before, .container::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ff4500;
+    top: -25px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .container::after {
+    right: -25px;
+    left: auto;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>
 </head>
 <body>
   <div class="container">
