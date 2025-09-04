@@ -15,30 +15,6 @@ padding:0;
 </head>
 <body>
 <div id="map" style="width:100%; height:100%; z-index:9999;"></div>
-
-<div id="loader-element" style= "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 10px; background-color: #ffffff; visibility: hidden;">
-
-<div id="progress-bar" style= "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 0%; height: 10px; background-color: #87ceeb; transition: width 0.3s ease; visibility: hidden;"></div>
-</div>
-
-<div id="modal" style="position: fixed; display: none; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.5); z-index: 10000;">
-<div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border-radius:8px; width:300px;">
-
-<p>There was a problem while launching the AR view. Instead you can...</p>
-<button id="modal2D">Experience in 2D Mode</button>
-<button id="retry">Retry</button>
-<button id="cancel">Cancel</button>
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js"></script>
-
-<!-- GLTFLoader (for loading .glb/.gltf models) -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.140.0/examples/js/loaders/GLTFLoader.js"></script>
-
-<!-- ARButton (for WebXR AR button) -->
-<!--<script src="https://rawcdn.githack.com/mrdoob/three.js/r150/examples/js/webxr/ARButton.js"></script>-->
-<!-- In HTML -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
 </body>
