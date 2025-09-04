@@ -44,9 +44,11 @@ marker.bindPopup(`<h3>${j.place}</h3>
   <p>Want to know more about this place?<br>
   <a href="${j.link}" target="_blank">Click here</a></p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
+if (LiveLat && LiveLong) {
 marker.on("popupopen", () => {
 routingControl.setWaypoints{[L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)]};
 });
+}
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
