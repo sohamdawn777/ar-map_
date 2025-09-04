@@ -46,7 +46,7 @@ marker.bindPopup(`<h3>${j.place}</h3>
 
 if (LiveLat && LiveLong) {
 marker.on("popupopen", () => {
-routingControl.setWaypoints{[L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)]};
+routingControl.setWaypoints([L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)]);
 });
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
