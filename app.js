@@ -39,11 +39,9 @@ marker.bindPopup(`<h3>${j.place}</h3>
   <p>Want to know more about this place?<br>
   <a href="${j.link}" target="_blank">Click here</a></p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-if (LiveLat && LiveLong) {
 marker.on("popupopen", () => {
-routingControl.setWaypoints([L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)]);
+routingControl.setWaypoints([L.latLng(coordinates.coords.latitude, coordinates.coords.longitude), L.latLng(j.lat, j.lon)]);
 });
-}
 }
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
@@ -63,10 +61,10 @@ fetchBtn.addEventListener("click", () => {
 const coordinates= await getLocation();
 document.body.removeChild(fetchBtn);
 
-log(coordinates.position.latitude);
-log(coordinates.position.longitude);
+log(coordinates.coords.latitude);
+log(coordinates.coords.longitude);
 
-const map= L.map("map", { center: [LiveLat, LiveLong], zoom: 19, maxZoom: 19, minZoom: 1 });
+const map= L.map("map", { center: [coordinates.coords.latitude, coordinates.coords.longitude], zoom: 19, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
 
