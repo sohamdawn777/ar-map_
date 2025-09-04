@@ -27,17 +27,6 @@ marker.bindPopup(`<h3>${j.place}</h3>
   <a href="${j.link}" target="_blank">Click here</a></p>
 `, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
-if (btn) {
-marker.on("popupopen", () => {
-btn.style.visibility= "visible";
-currentMarker= marker;
-});
-marker.on("popupclose", () => {
-btn.style.visibility= "hidden";
-currentMarker= null;
-});
-}
-}
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
