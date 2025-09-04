@@ -22,6 +22,9 @@ function log(msg) {
 function liveLoc(position) {
 const liveLat= position.coords.latitude;
 const liveLng= position.coords.longitude;
+
+log(liveLat);
+log(liveLng);
 L.marker([liveLat, liveLng], {icon: L.icon({iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
     title: "Your Location", draggable: false, riseOnHover: true }).addTo(map);
 
