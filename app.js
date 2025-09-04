@@ -50,6 +50,7 @@ const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
 
+try {
 const fetchBtn= document.createElement("button");
 fetchBtn.textContent = "Share your location";
 fetchBtn.style.position = "fixed";
@@ -73,5 +74,10 @@ let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https:/
 /*const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);*/
 
 mapMarker(data);
+}
+
+catch (e) {
+log(e);
+}
 
 });
