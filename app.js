@@ -58,9 +58,9 @@ const marker = L.marker([j.lat, j.lon], {
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
     title: "Graffiti Spot", draggable: false, riseOnHover: true, modelUrl: j.model }).addTo(map);
 
-marker.bindPopup(`<h3>${data.place}</h3>
+marker.bindPopup(`<h3>${j.place}</h3>
   <p>Want to know more about this place?<br>
-  <a href="${data.link}" target="_blank">Click here</a></p>
+  <a href="${j.link}" target="_blank">Click here</a></p>
 `, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
 if (btn) {
