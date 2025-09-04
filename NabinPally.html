@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nabin Pally</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Reset some default styles */
     * {
@@ -13,39 +14,85 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #fff;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       padding: 20px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #222;
+    .container {
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      padding: 50px 40px;
+      border-radius: 20px;
+      max-width: 800px;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     }
 
     p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      text-align: center;
-      color: #555;
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      text-align: justify;
+      text-indent: 2em;
     }
 
-    /* Optional: subtle shadow card effect */
-    .container {
-      background-color: #fff;
-      padding: 40px 30px;
-      border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      text-align: center;
+    /* Graffiti paint splashes as background decoration */
+    .container::before, .container::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ff3c3c, transparent);
+      opacity: 0.3;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .container::before {
+      top: -50px;
+      left: -50px;
+      transform: rotate(45deg);
+    }
+
+    .container::after {
+      bottom: -50px;
+      right: -50px;
+      transform: rotate(-30deg);
+    }
+
+    /* Optional: animated underline effect for headings */
+    h1::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 4px;
+      background: #ffeb3b;
+      margin: 10px auto 0;
+      border-radius: 2px;
+      animation: slide 1.5s infinite alternate;
+    }
+
+    @keyframes slide {
+      0% { width: 30%; }
+      100% { width: 50%; }
     }
   </style>
 </head>
