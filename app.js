@@ -116,7 +116,7 @@ const fallBtn3= document.getElementById("cancel");
 
 const rayCaster= new THREE.Raycaster();
 
-const pointer= new THREE.vector2();
+const pointer= new THREE.Vector2();
 pointer.x= (event.clientX/window.innerWidth)*2-1;
 pointer.y= -(event.clientY/window.innerHeight)*2+1;
 
