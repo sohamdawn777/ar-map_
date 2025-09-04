@@ -58,6 +58,12 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, 
 let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
 
 const fetchBtn= document.createElement("button");
+fetchBtn.textContent = "Share your location";
+fetchBtn.style.position = "fixed";
+fetchBtn.style.top = "20px";
+fetchBtn.style.left = "50%";
+fetchBtn.style.transform = "translateX(-50%)";
+fetchBtn.style.zIndex = 9999;
 document.body.appendChild(fetchBtn);
 
 fetchBtn.addEventListener("click", () => {
