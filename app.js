@@ -142,11 +142,11 @@ vid.style.width = "100%";
 vid.style.height = "100%";
 vid.style.zIndex = "9999";
 document.body.appendChild(vid);
-vid.play();
+await vid.play();
 
 if (Model && Model.scene) {
 
-const intersectS= rayCaster.intersectObject(meshes, true);
+const intersectS= rayCaster.intersectObjects(meshes, true);
 
 if (intersectS.length>0) {
 const hitPoinT= intersectS[0].point;
