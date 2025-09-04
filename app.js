@@ -122,6 +122,8 @@ pointer.y= -(event.clientY/window.innerHeight)*2+1;
 
 rayCaster.setFromCamera(pointer, camera);
 
+const meshes= scene.children.filter(obj => obh.isMesh);
+
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
 
@@ -144,7 +146,7 @@ vid.play();
 
 if (Model && Model.scene) {
 
-const intersectS= rayCaster.intersectObject(renderer.domElement, true);
+const intersectS= rayCaster.intersectObject(meshes, true);
 
 if (intersectS.length>0) {
 const hitPoinT= intersectS[0].point;
@@ -327,6 +329,15 @@ document.body.appendChild(renderer.domElement);
 renderer.xr.enabled= true;
 
 const glbLoader= new THREE.GLTFLoader();
+
+const planeGeometry= new THREE.PlaneGeometry(1000,1000);
+const meshMaterial= new THREE.MeshBasicMaterial({visible: false});
+const mesh= new Mesh(planeGeometry, meshMaterial);
+
+mesh.rotation.x= -Math.PI/2;
+mesh.position.y= 0;
+
+scene.add(mesh);
 
 let currentMarker= null;
 
