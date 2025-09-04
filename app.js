@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded",() => {
 
-const LiveLat;
-const LiveLong;
+let LiveLat;
+let LiveLong;
 
 function log(msg) {
   const logBox = document.getElementById("log") || (() => {
@@ -43,12 +43,12 @@ marker.bindPopup(`<h3>${j.place}</h3>
   <p>Want to know more about this place?<br>
   <a href="${j.link}" target="_blank">Click here</a></p>`, { maxWidth: 200, minWidth: 50, autoPan: true, closeButton: true, keepInView: true });
 
+marker.on("popupopen", () => {
+L.Routing.control({waypoints: [L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")});
+});
+}
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
-
-L.Routing.control({waypoints: [L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")});
-
-}
 }
 
 const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, minZoom: 1 });
@@ -57,8 +57,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, 
 
 let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
 
-mapMarker(data);
-
 navigator.geolocation.getCurrentPosition(liveLoc, errFetch);
+
+mapMarker(data);
 
 });
