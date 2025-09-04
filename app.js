@@ -18,13 +18,7 @@ function log(msg) {
 
 function onLoad(gltf) {
 
-//document.getElementById("loader-element").style.visibility= "hidden";
-//document.getElementById("progress-bar").style.visibility= "hidden";
-
-//gltf.scene.position.set(0,0,0);
-//gltf.scene.scale.set(1,1,1);
-//scene.add(gltf.scene);
-//loadedModel= gltf;
+console.log("Model Loaded.");
 
 }
 
@@ -155,7 +149,7 @@ renderer.domElement.style.zIndex= "0";
 }
 
 catch (e) {
-
+console.log(e);
 const Model= await modelLoad();
 
 document.getElementById("modal").style.display= "block";
@@ -205,7 +199,6 @@ Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
 camera.lookAt(hitPoinT.x,hitPoinT.y,hitPoinT.z);
-//Model.scene.position.set(0,1.2,0);
 
 renderer.domElement.style.position= "absolute";
 renderer.domElement.style.pointerEvents= "auto";
@@ -225,7 +218,7 @@ renderer.render(scene, camera);
 }
 }
 catch (err) {
-log(err);
+console.log(err);
 
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "user"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
 const vid= document.createElement("video");
@@ -241,11 +234,11 @@ vid.style.width = "100%";
 vid.style.height = "100%";
 vid.style.zIndex = "9999";
 document.body.appendChild(vid);
-vid.play();
+await vid.play();
 
 if (Model && Model.scene) {
 
-const intersectS= rayCaster.intersectObject(renderer.domElement, true);
+const intersectS= rayCaster.intersectObjects(meshes, true);
 
 if (intersectS.length>0) {
 const hitPoinT= intersectS[0].point;
@@ -254,8 +247,6 @@ Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
 camera.lookAt(hitPoinT.x,hitPoinT.y,hitPoinT.z);
-}
-//Model.scene.position.set(0,1.2,0);
 
 renderer.domElement.style.position= "absolute";
 renderer.domElement.style.pointerEvents= "auto";
@@ -269,6 +260,7 @@ if (vid.readyState>=2) {
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
+}
 }
 }
 }
