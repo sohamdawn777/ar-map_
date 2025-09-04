@@ -102,6 +102,56 @@ try {
 const xrSession= await navigator.xr.requestSession("immersive-ar",{requiredFeatures: ["hit-test"] });
 
 log("session requested");
+
+const space= await xrSession.requestReferenceSpace("local-floor");
+const viewerSpace= await xrSession.requestReferenceSpace("viewer");
+log("reference space requested");
+const source= await xrSession.requestHitTestSource({space: viewerSpace });
+log("hit test source requested");
+
+renderer.setAnimationLoop(() => {
+renderer.render(scene, camera);
+});
+
+let anchorStatus= false;
+xrSession.addEventListener("select", (xrFrame) => {
+try {
+const result= xrFrame.getHitTestResults(source);
+if (result.length>0 && anchorStatus=== false) {
+const pose= result[0].getPose(space);
+
+xrSession.addAnchor(pose, space);
+
+if (loadedModel && loadedModel.scene) {
+const position= pose.transform.position;
+loadedModel.scene.position.set(position.x, position.y, position.z);
+scene.add(loadedModel.scene);
+anchorStatus= true;
+}
+
+else {
+log("model not loaded yet");
+}
+}
+else {
+}
+}
+catch {
+log("Invalid surface chosen");
+}
+});
+xrSession.addEventListener("end",() => {
+if (arMessage && arMessage.parentNode) {
+document.body.removeChild(arMessage);
+}
+anchorStatus= false;
+if (loadedModel && loadedModel.scene && scene.children.includes(loadedModel.scene)) {
+scene.remove(loadedModel.scene);
+}
+renderer.domElement.style.display= "none";
+renderer.domElement.style.zIndex= "0";
+});
+  
 }
 
 catch (e) {
@@ -244,56 +294,6 @@ fallBtn3.addEventListener("click", () => {
 document.getElementById("modal").style.display= "none";
 });
 }
-
-//const xrSession= renderer.xr.getSession();
-const space= await xrSession.requestReferenceSpace("local-floor");
-/*const viewerSpace= await xrSession.requestReferenceSpace("viewer");
-log("reference space requested");
-const source= await xrSession.requestHitTestSource({space: viewerSpace });
-log("hit test source requested");*/
-
-/*renderer.setAnimationLoop(() => {
-renderer.render(scene, camera);
-});
-
-let anchorStatus= false;
-xrSession.addEventListener("select", (xrFrame) => {
-try {
-const result= xrFrame.getHitTestResults(source);
-if (result.length>0 && anchorStatus=== false) {
-const pose= result[0].getPose(space);
-
-xrSession.addAnchor(pose, space);
-
-if (loadedModel && loadedModel.scene) {
-const position= pose.transform.position;
-loadedModel.scene.position.set(position.x, position.y, position.z);
-scene.add(loadedModel.scene);
-anchorStatus= true;
-}
-
-else {
-log("model not loaded yet");
-}
-}
-else {
-}
-}
-catch {
-log("Invalid surface chosen");
-}
-});
-xrSession.addEventListener("end",() => {
-if (arMessage && arMessage.parentNode) {
-document.body.removeChild(arMessage);
-}
-anchorStatus= false;
-if (loadedModel && loadedModel.scene && scene.children.includes(loadedModel.scene)) {
-scene.remove(loadedModel.scene);
-}
-renderer.domElement.style.display= "none";
-renderer.domElement.style.zIndex= "0";
-});*/
 }
 
 
