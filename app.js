@@ -102,8 +102,7 @@ let data = [
   { lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://sohamdawn777.github.io/ar-map_/LeninSarani.html" },
   { lat: 22.548695, lon: 88.352875, place: "Park Street", link: "https://sohamdawn777.github.io/ar-map_/ParkStreet.html" },
   { lat: 22.518356, lon: 88.360134, place: "Lake Gardens Warehouse", link: "https://sohamdawn777.github.io/ar-map_/LakeGardensWarehouse.html" },
-  { lat: 22.533811, lon: 88.380567, place: "Rashbehari Avenue", link: "https://sohamdawn777.github.io/ar-map_/RashbehariAvenue.html" },
-  { lat: 22.495321, lon: 88.345876, place: "New Alipore", link: "https://sohamdawn777.github.io/ar-map_/NewAlipore.html" }
+  { lat: 22.533811, lon: 88.380567, place: "Rashbehari Avenue", link: "https://sohamdawn777.github.io/ar-map_/RashbehariAvenue.html" }
 ];
 
       mapMarker(data, map, coordinates.coords.latitude, coordinates.coords.longitude, routingControl);
