@@ -114,10 +114,6 @@ const fallBtn1= document.getElementById("modal2D");
 const fallBtn2= document.getElementById("retry");
 const fallBtn3= document.getElementById("cancel");
 
-
-fallBtn1.addEventListener("click",async () => {
-document.getElementById("modal").style.display= "none";
-
 const rayCaster= new THREE.Raycaster();
 
 const pointer= new THREE.vector2();
@@ -125,6 +121,9 @@ pointer.x= (event.clientX/window.innerWidth)*2-1;
 pointer.y= -(event.clientY/window.innerHeight)*2+1;
 
 rayCaster.setFromCamera(pointer, camera);
+
+fallBtn1.addEventListener("click",async () => {
+document.getElementById("modal").style.display= "none";
 
 try {
 const realCam= await navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}, width: {ideal: window.innerWidth}, height: {ideal: window.innerHeight}, audio: false});
