@@ -31,7 +31,7 @@ function errFetch(error) {
 log(`An error occured: ${error.message}`);
 }
 
-function mapMarker (data) {
+function mapMarker (data,map) {
 for (let j of data) {
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
@@ -74,7 +74,7 @@ let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https:/
 
 const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
-mapMarker(data);
+mapMarker(data,map);
 }
 });
 }
