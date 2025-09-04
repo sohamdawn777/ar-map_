@@ -19,16 +19,14 @@ function log(msg) {
   logBox.innerHTML += `<div>${msg}</div>`;
 }
 
-function liveLoc(position) {
-const liveLat= position.coords.latitude;
-const liveLng= position.coords.longitude;
-
-LiveLat= liveLat;
-LiveLong= liveLng;
-}
-
-function errFetch(error) {
-log(`An error occured: ${error.message}`);
+function getLocation() {
+return new Promise((reject, resolve) => {
+navigator.geolocation
+getCurrentPosition(
+(position) => resolve(position),
+(error) => reject(error)
+);
+});
 }
 
 function mapMarker (data,map) {
@@ -62,14 +60,12 @@ fetchBtn.style.zIndex = 9999;
 document.body.appendChild(fetchBtn);
 
 fetchBtn.addEventListener("click", () => {
-navigator.geolocation.getCurrentPosition(liveLoc, errFetch);
+const coordinates= await getLocation();
 document.body.removeChild(fetchBtn);
 
-log(LiveLat);
-log(LiveLong);
+log(coordinates.position.latitude);
+log(coordinates.position.longitude);
 
-if (LiveLat && LiveLong) {
-log("pallu");
 const map= L.map("map", { center: [LiveLat, LiveLong], zoom: 19, maxZoom: 19, minZoom: 1 });
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
@@ -79,7 +75,6 @@ let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https:/
 const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
 mapMarker(data,map);
-}
 });
 }
 
