@@ -155,7 +155,6 @@ Model.scene.scale.set(1,1,1);
 scene.add(Model.scene);
 camera.position.set(0, 1.6, 3);
 camera.lookAt(hitPoinT.x,hitPoinT.y,hitPoinT.z);
-}
 //Model.scene.position.set(0,1.2,0);
 
 renderer.domElement.style.position= "absolute";
@@ -170,6 +169,7 @@ if (vid.readyState>=2) {
 renderer.setAnimationLoop(() => {
 renderer.render(scene, camera);
 });
+}
 }
 }
 }
