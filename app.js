@@ -122,7 +122,7 @@ pointer.y= -(event.clientY/window.innerHeight)*2+1;
 
 rayCaster.setFromCamera(pointer, camera);
 
-const meshes= scene.children.filter(obj => obh.isMesh);
+const meshes= scene.children.filter(obj => obj.isMesh);
 
 fallBtn1.addEventListener("click",async () => {
 document.getElementById("modal").style.display= "none";
