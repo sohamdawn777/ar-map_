@@ -91,9 +91,9 @@ window.addEventListener("DOMContentLoaded", () => {
       }).addTo(map);
 
       let data = [
-        { lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N" },
-        { lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL" },
-        { lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://sohamdawn777.github.io/ar_map-/LeninSarani.html" },
+        { lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://sohamdawn777.github.io/ar-map_/NabinPally.html" },
+        { lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://sohamdawn777.github.io/ar-map_/BidhanSarani.html" },
+        { lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://sohamdawn777.github.io/ar-map_/LeninSarani.html" },
       ];
 
       mapMarker(data, map, coordinates.coords.latitude, coordinates.coords.longitude, routingControl);
