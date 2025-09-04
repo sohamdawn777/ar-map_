@@ -16,7 +16,7 @@ function log(msg) {
   logBox.innerHTML += `<div>${msg}</div>`;
 }
 
-function mapMarker (btn, data) {
+function mapMarker (data) {
 for (let j of data) {
 const marker = L.marker([j.lat, j.lon], { 
     icon: L.icon({ iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
@@ -37,6 +37,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, 
 
 let data= [{lat: 22.526911, lon: 88.377648, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model1.glb", place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model2.glb", place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, model: "https://raw.githubusercontent.com/sohamdawn777/Ar-map/main/model3.glb", place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
 
-mapMarker(arBtn, data);
+mapMarker(data);
 
 });
