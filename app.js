@@ -46,6 +46,7 @@ marker.on("popupopen", () => {
 routingControl.setWaypoints([L.latLng(LiveLat, LiveLong), L.latLng(j.lat, j.lon)]);
 });
 }
+}
 const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
@@ -71,7 +72,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, 
 
 let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
 
-/*const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);*/
+const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
 mapMarker(data);
 }
