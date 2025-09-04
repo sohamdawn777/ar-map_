@@ -23,9 +23,6 @@ function liveLoc(position) {
 const liveLat= position.coords.latitude;
 const liveLng= position.coords.longitude;
 
-L.marker([liveLat, liveLng], {icon: L.icon({iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-32] }),
-    title: "Your Location", draggable: false, riseOnHover: true }).addTo(map);
-
 LiveLat= liveLat;
 LiveLong= liveLng;
 }
@@ -53,12 +50,6 @@ const bounds = L.latLngBounds(data.map(j => [j.lat, j.lon]));
 map.fitBounds(bounds);
 }
 
-const map= L.map("map", { center: [22.526911,88.377648], zoom: 19, maxZoom: 19, minZoom: 1 });
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
-
-let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
-
 const fetchBtn= document.createElement("button");
 fetchBtn.textContent = "Share your location";
 fetchBtn.style.position = "fixed";
@@ -72,6 +63,12 @@ fetchBtn.addEventListener("click", () => {
 navigator.geolocation.getCurrentPosition(liveLoc, errFetch);
 document.body.removeChild(fetchBtn);
 });
+
+const map= L.map("map", { center: [LiveLat, LiveLong], zoom: 19, maxZoom: 19, minZoom: 1 });
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom: 19, minZoom: 1, tms: false }).addTo(map);
+
+let data= [{lat: 22.526911, lon: 88.377648, place: "Nabin Pally", link: "https://q.me-qr.com/7ErN213N"}, {lat: 22.5999666, lon: 88.3729349, place: "Bidhan Sarani", link: "https://qr1.me-qr.com/text/t49MjMpL"}, {lat: 22.56492395, lon: 88.35405545738757, place: "Lenin Sarani", link: "https://qr1.me-qr.com/text/mhpVXPZ1"}];
 
 const routingControl= L.Routing.control({waypoints: [], router: L.Routing.mapbox("pk.eyJ1Ijoic2QxMjM0NS0iLCJhIjoiY21mNW1jNHoyMDZscDJrc2l1Z3VsaTBmNSJ9.7V5XHO7ewmSQtHOTka6rlg")}).addTo(map);
 
