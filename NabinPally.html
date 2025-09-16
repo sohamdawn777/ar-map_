@@ -5,7 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nabin Pally</title>
   <style>
-  
+  /* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff1e6, #ffe4e1); /* warm street-art vibe */
+  color: #222;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-left: 8px solid #ff4500; /* graffiti accent */
+  border-right: 8px solid #ff4500;
+}
+
+h1 {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 2.8em;
+  text-align: center;
+  color: #ff4500;
+  text-shadow: 2px 2px #ffd700, -2px -2px #00bcd4;
+  margin: 20px 0 15px;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 4px solid #333;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 1.15em;
+  text-align: justify;
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+blockquote {
+  font-style: italic;
+  padding: 15px 20px;
+  border-left: 6px solid #ff4500;
+  background: rgba(255, 69, 0, 0.05);
+  margin: 25px 0;
+  font-size: 1.1em;
+}
+
+ul {
+  margin: 20px 0 20px 30px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+ul li:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+footer {
+  margin-top: 35px;
+  text-align: right;
+  font-style: italic;
+  color: #555;
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding: 25px 20px;
+    margin: 20px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  p, blockquote {
+    font-size: 1em;
+  }
+}
 </style>
 </head>
 <body>
