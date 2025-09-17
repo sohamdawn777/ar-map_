@@ -95,6 +95,47 @@ ul.highlights li:first-child {
   color: #e74c3c;
 }
 
+#DYK {
+  background: linear-gradient(135deg, #fff7e6, #ffe6e6); 
+  border-left: 8px solid #ff4500; 
+  padding: 20px 25px;
+  margin: 30px auto;
+  max-width: 750px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+}
+
+#DYK::before {
+  content: "💡";
+  font-size: 1.5rem;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  opacity: 0.8;
+}
+
+#DYK h3 {
+  color: #d6336c;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#DYK p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: justify;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 ul.timeline {
   margin: 30px 0 20px 40px;
   list-style-type: none; 
