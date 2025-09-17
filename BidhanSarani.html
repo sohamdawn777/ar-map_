@@ -3,87 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bidhan Sarani</title>
+  <title>Nabin Pally</title>
   <style>
   /* Reset defaults */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ffefd5, #ffe4e1); /* subtle warm street vibe */
-    color: #222;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
-  }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff1e6, #ffe4e1); /* warm street-art vibe */
+  color: #222;
+  line-height: 1.6;
+  padding: 20px;
+}
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ff4500; /* bold graffiti accent */
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-left: 8px solid #ff4500; /* graffiti accent */
+  border-right: 8px solid #ff4500;
+}
 
-  p {
-    font-size: 1.2rem;
-    max-width: 750px;
-    text-align: justify;
-    color: #333;
-    line-height: 1.8;
-    padding: 0 10px;
-  }
+h1 {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 2.8em;
+  text-align: center;
+  color: #ff4500;
+  text-shadow: 2px 2px #ffd700, -2px -2px #00bcd4;
+  margin: 20px 0 15px;
+}
 
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 4px solid #333;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 1.15em;
+  text-align: justify;
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+p::first-letter {
+  font-size: 3rem;       
+  font-weight: bold;     
+  color: #ff4500;        
+  float: left;           
+  line-height: 1;        
+  margin-right: 8px;     
+}
+
+blockquote {
+  font-style: italic;
+  padding: 15px 20px;
+  border-left: 6px solid #ff4500;
+  background: rgba(255, 69, 0, 0.05);
+  margin: 25px 0;
+  font-size: 1.1em;
+}
+
+ul.highlights {
+  margin: 20px 0 20px 30px;
+  list-style-type: disc;
+}
+ul.highlights li:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e74c3c;
+}
+
+#DYK {
+  background: linear-gradient(135deg, #fff7e6, #ffe6e6); 
+  border-left: 8px solid #ff4500; 
+  padding: 20px 25px;
+  margin: 30px auto;
+  max-width: 750px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  padding-top: 35px;
+}
+
+#DYK::after {
+  content: "💡";
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 1.4rem;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#DYK h3 {
+  color: #d6336c;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#DYK p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+ul.timeline {
+  margin: 30px 0 20px 40px;
+  list-style-type: none; 
+  border-left: 3px solid #333; 
+  padding-left: 15px;
+}
+ul.timeline li {
+  position: relative;
+  margin-bottom: 12px;
+}
+ul.timeline li::before {
+  content: "🖌";
+  position: absolute;
+  left: -25px;
+  color: #ff4500; /* timeline dot */
+  font-size: 1.2em;
+}
+
+footer {
+  margin-top: 35px;
+  text-align: right;
+  font-style: italic;
+  color: #555;
+}
+
+@media (max-width: 650px) {
   .container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 60px 50px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    text-align: center;
-    animation: fadeInUp 1s ease-out;
-    border-left: 8px solid #ff4500; /* graffiti-style accent */
-    border-right: 8px solid #ff4500;
-    position: relative;
+    padding: 25px 20px;
+    margin: 20px;
   }
-
-  .container::before, .container::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: #ff4500;
-    top: -25px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  h1 {
+    font-size: 2em;
   }
-
-  .container::after {
-    right: -25px;
-    left: auto;
+  p, blockquote {
+    font-size: 1em;
   }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+}
 </style>
 </head>
 <body>
   <div class="container">
-    <h1>The Scholar's Wall</h1>
-    <p>Bidhan Sarani, named after the first Chief Minister of West Bengal, is lined with educational institutions and historic homes that have seen generations pass. Graffiti along this street often carries intellectual undertones—quotes from poets, abstract depictions of knowledge and learning, and socially conscious imagery. One mural combines Bengali literary legends with contemporary calls for education and awareness, bridging past and present. Historically, this area was a hub for intellectual discourse, and its walls now mirror that tradition. Artists here use color and symbolism to narrate stories of Kolkata as a city of thinkers, writers, and dreamers, giving the street an almost literary aura.</p>
+<figure>
+    <img src="https://sohamdawn777.github.io/ar-map_/NabinPally1.jpeg" alt="">
+<figcaption>Sukumar Roy</figcaption>
+</figure>
+
+<h1>The Community Canvas</h1>
+
+<blockquote>"In Nabin Pally, walls don’t just stand—they breathe. Each stroke is a heartbeat, each color a memory, and every corner whispers the story of a community that paints its soul for the world to see."
+</blockquote>
+
+<ul class="highlights">
+<li>Highlights:</li>
+<ul>
+<li>Children and daily life captured in murals</li>
+<li>Local festivals depicted on walls</li>
+<li>Nature and neighborhood heritage celebrated</li>
+<li>Walls as living community stories</li>
+</ul>
+</ul>
+<br>
+    <p>
+In the quieter lanes of Nabin Pally, graffiti is more intimate, reflecting the neighborhood’s community-driven spirit. The murals range from playful street art—depicting daily life, children playing, local flora and fauna—to murals commemorating local festivals and cultural heritage. Historically, this area has seen Kolkata’s growth from small, close-knit neighborhoods into sprawling urban landscapes. The street art serves as a chronicle of that transformation, blending nostalgia with modernity. 
+<br>
+<figure>
+<img src=https://sohamdawn777.github.io/ar-map_/NabinPally2.jpeg alt=""></img>
+<figcaption>Illustration of Roy's work</figcaption>
+</figure>
+<br>
+Artists engage residents, turning walls into collective memory, where every stroke tells a story of shared identity, celebration, and pride. Walking here is like reading a vibrant, living diary of the community.
+</p>
+
+<div id="DYK">
+<h3>Did You Know ?</h3>
+<p>In Durga Puja 2023, Nabin Pally transformed its streets into the whimsical world of Sukumar Ray’s Abol Tabol — façades painted in stark black-and-white like a 2D comic book, complete with Ray’s ancestral home and even a playful “Nonsense Club.</p>
+</div>
+
+<ul class="timeline">
+<li>Timeline</li>
+<ul>
+<li>1934: Hatibagan Nabin Pally Sarbojanin Durga Puja was established.</li> 
+<li>2016: Nabin Pally / Nalin Sarkar Street was known for its artistic & ethnic Durga Puja pandals.</li> 
+<li>2023: Theme: Abol Tabol Para — Nabin Pally transformed streets/buildings into Sukumar Ray’s Abol Tabol universe (black-and-white façades, recreations, immersive art) for Durga Puja.</li>
+<li>2024: Theme for Nabin Pally Puja: Theater Para — a tribute to Kolkata’s theatre culture, recreating iconic theatre halls etc.</li>
+</ul>
+</ul>
+
+<footer>
+<p><em>Credits: Local Artists</em></p>
+</footer>
   </div>
 </body>
 </html>
