@@ -85,15 +85,32 @@ blockquote {
   font-size: 1.1em;
 }
 
-ul {
+ul.highlights {
   margin: 20px 0 20px 30px;
-  padding: 0;
   list-style-type: disc;
 }
-
-ul li:first-child {
+ul.highlights li:first-child {
   font-weight: bold;
   margin-bottom: 10px;
+  color: #e74c3c;
+}
+
+ul.timeline {
+  margin: 30px 0 20px 40px;
+  list-style-type: none; 
+  border-left: 3px solid #333; 
+  padding-left: 15px;
+}
+ul.timeline li {
+  position: relative;
+  margin-bottom: 12px;
+}
+ul.timeline li::before {
+  content: "●";
+  position: absolute;
+  left: -25px;
+  color: #ff4500; /* timeline dot */
+  font-size: 1.2em;
 }
 
 footer {
