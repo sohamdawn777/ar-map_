@@ -177,6 +177,41 @@ footer {
   color: #555;
 }
 
+.credits {
+  margin-top: 25px;
+  text-align: right;
+  font-size: 0.95rem;
+  color: #444;
+  font-style: italic;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.credits p::first-letter {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  float: none;
+  margin: 0;
+  line-height: inherit;
+  display: inline;
+  vertical-align: baseline;
+}
+
+.credits em {
+  color: #d6336c;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.logo {
+  width: 35px;     
+  height: 35px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;  
+  margin-right: 0;
+}
+
 @media (max-width: 650px) {
   .container {
     padding: 25px 20px;
