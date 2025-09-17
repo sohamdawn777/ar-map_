@@ -183,6 +183,21 @@ footer {
   object-fit: contain;
 }
 
+.team-name {
+  margin-top: 35px;
+  text-align: right;
+  font-style: italic;
+  color: #555;
+}
+
+.team-name::first-letter { 
+  font-size: 1.5rem;    
+  font-weight: bold;      
+  color: #ff4500;                  
+  line-height: 1;        
+  float: left;    
+}
+
 @media (max-width: 650px) {
   .container {
     padding: 25px 20px;
@@ -247,7 +262,7 @@ Artists engage residents, turning walls into collective memory, where every stro
 
 <footer>
 <p><em>Credits: Local Artists</em></p>
-<p><em>Curated By Team GolpoPoth</em></p>
+<p class="team-name"><em>Curated By Team GolpoPoth</em></p>
 <img class="logo" src="https://sohamdawn777.github.io/ar-map_/logo.jpg" alt="">
 </footer>
   </div>
