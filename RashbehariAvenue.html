@@ -3,87 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rashbehari Avenue</title>
+  <title>Bidhan Sarani</title>
   <style>
   /* Reset defaults */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #ffefd5, #ffe4e1); /* subtle warm street vibe */
-    color: #222;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
-  }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff1e6, #ffe4e1); /* warm street-art vibe */
+  color: #222;
+  line-height: 1.6;
+  padding: 20px;
+}
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ff4500; /* bold graffiti accent */
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-left: 8px solid #ff4500; /* graffiti accent */
+  border-right: 8px solid #ff4500;
+}
 
-  p {
-    font-size: 1.2rem;
-    max-width: 750px;
-    text-align: justify;
-    color: #333;
-    line-height: 1.8;
-    padding: 0 10px;
-  }
+h1 {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 2.8em;
+  text-align: center;
+  color: #ff4500;
+  text-shadow: 2px 2px #ffd700, -2px -2px #00bcd4;
+  margin: 20px 0 15px;
+}
 
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 4px solid #333;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+p {
+  font-size: 1.15em;
+  text-align: justify;
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+p::first-letter {
+  font-size: 3rem;       
+  font-weight: bold;     
+  color: #ff4500;        
+  float: left;           
+  line-height: 1;        
+  margin-right: 8px;     
+}
+
+blockquote {
+  font-style: italic;
+  padding: 15px 20px;
+  border-left: 6px solid #ff4500;
+  background: rgba(255, 69, 0, 0.05);
+  margin: 25px 0;
+  font-size: 1.1em;
+}
+
+ul.highlights {
+  margin: 20px 0 20px 30px;
+  list-style-type: disc;
+}
+ul.highlights li:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #e74c3c;
+}
+
+#DYK {
+  background: linear-gradient(135deg, #fff7e6, #ffe6e6); 
+  border-left: 8px solid #ff4500; 
+  padding: 20px 25px;
+  margin: 30px auto;
+  max-width: 750px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  padding-top: 35px;
+}
+
+#DYK::after {
+  content: "💡";
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 1.4rem;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#DYK h3 {
+  color: #d6336c;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#DYK p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+ul.timeline {
+  margin: 30px 0 20px 40px;
+  list-style-type: none; 
+  border-left: 3px solid #333; 
+  padding-left: 15px;
+}
+ul.timeline li {
+  position: relative;
+  margin-bottom: 12px;
+}
+ul.timeline li::before {
+  content: "🖌";
+  position: absolute;
+  left: -25px;
+  color: #ff4500; /* timeline dot */
+  font-size: 1.2em;
+}
+
+.timeline-heading {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  color: #e74c3c;
+}
+
+footer {
+  margin-top: 35px;
+  text-align: right;
+  font-style: italic;
+  color: #555;
+}
+
+.credits {
+  margin-top: 25px;
+  text-align: right;
+  font-size: 0.95rem;
+  color: #444;
+  font-style: italic;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.credits p::first-letter {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  float: none;
+  margin: 0;
+  line-height: inherit;
+  display: inline;
+  vertical-align: baseline;
+}
+
+.credits em {
+  color: #d6336c;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.logo {
+  width: 60px;     
+  height: 60px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;  
+  margin-right: 0;
+}
+
+@media (max-width: 650px) {
   .container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 60px 50px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    text-align: center;
-    animation: fadeInUp 1s ease-out;
-    border-left: 8px solid #ff4500; /* graffiti-style accent */
-    border-right: 8px solid #ff4500;
-    position: relative;
+    padding: 25px 20px;
+    margin: 20px;
   }
-
-  .container::before, .container::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: #ff4500;
-    top: -25px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  h1 {
+    font-size: 2em;
   }
-
-  .container::after {
-    right: -25px;
-    left: auto;
+  p, blockquote {
+    font-size: 1em;
   }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
+}
 </style>
 </head>
 <body>
+<img class="logo" src="https://sohamdawn777.github.io/ar-map_/logo.jpg" alt="">
   <div class="container">
-    <h1>The Urban Pulse</h1>
-    <p>Rashbehari Avenue is the lifeline of south Kolkata, where the hum of rickshaws and the chatter of street vendors form the city’s ever-present soundtrack. Among the bustling shops and food stalls, graffiti has found its space—slices of calm amidst chaos. Vibrant murals depict local folklore, Bengali cinema icons, and playful interpretations of everyday life. One wall illustrates the classic tram gliding through a storm of colorful patterns, while another portrays mythological creatures mingling with street cats—a nod to the city’s love for storytelling and whimsy. Historically, this avenue has been a commercial hub since the British era, and its street art reflects that blend of commerce, culture, and creativity. Graffiti here feels alive, like it’s constantly evolving alongside the city, capturing fleeting moments of Kolkata’s urban pulse.</p>
+<figure>
+    <img src="https://sohamdawn777.github.io/ar-map_/RashbehariAvenue1.jpg" alt="">
+<figcaption>The Sound of Abstraction</figcaption>
+</figure>
+
+<h1>The Urban Pulse</h1>
+
+<blockquote>"Along Rashbehari Avenue, where tramlines hum and markets overflow, the walls bloom like secret gardens—each mural a window into the soul of South Kolkata, where tradition and rebellion meet in colors that refuse to fade."
+</blockquote>
+
+<ul class="highlights">
+<li>Highlights:</li>
+<ul>
+<li>80-foot traditional Bengali Alpona mural at Rashbehari More</li>
+<li>Shanu Lahiri’s large public murals along the avenue</li>
+<li>Community-driven graffiti reflecting local culture</li>
+<li>2D murals depicting nature and urban life</li>
+</ul>
+</ul>
+<br>
+    <p>
+Rashbehari Avenue is the lifeline of south Kolkata, where the hum of rickshaws and the chatter of street vendors form the city’s ever-present soundtrack. Among the bustling shops and food stalls, graffiti has found its space—slices of calm amidst chaos. Vibrant murals depict local folklore, Bengali cinema icons, and playful interpretations of everyday life. One wall illustrates the classic tram gliding through a storm of colorful patterns, while another portrays mythological creatures mingling with street cats—a nod to the city’s love for storytelling and whimsy. 
+<br>
+<figure>
+<img src=https://sohamdawn777.github.io/ar-map_/RashbehariAvenue2.jpeg alt=""></img>
+<figcaption>Beat of the City on Asphalt</figcaption>
+</figure>
+<br>
+Historically, this avenue has been a commercial hub since the British era, and its street art reflects that blend of commerce, culture, and creativity. Graffiti here feels alive, like it’s constantly evolving alongside the city, capturing fleeting moments of Kolkata’s urban pulse.
+</p>
+
+<div id="DYK">
+<h3>Did You Know ?</h3>
+<p>Artist Shanu Lahiri, renowned for her large public murals, created a sketch of Rashbehari Avenue that was featured during the Buddhadev Bose Centenary Lecture at Jadavpur University. This artwork is part of a collection of over 100 of her previously unseen works displayed at Galerie 88 in Kolkata.</p>
+</div>
+
+<ul class="timeline">
+<li class="timeline-heading">Timeline ⏳️</li>
+<ul>
+  <li>Early 2010s: Street art began to gain visibility along Rashbehari Avenue, with artists starting to use public walls as canvases for their work.</li>
+  <li>Mid 2010s to 2020s: The street art scene along Rashbehari Avenue flourished, with murals and graffiti becoming integral to the city's cultural landscape.</li>
+  <li>2025: Efforts to preserve and promote street art led to curated exhibitions and public installations, showcasing the vibrant artistic expressions of the community.</li>
+</ul>
+</ul>
+
+<footer>
+<p><em>Credits: Local Artists</em></p>
+<div class="credits">
+<p><em>Curated By Team GolpoPoth</em></p>
+</div>
+</footer>
   </div>
 </body>
 </html>
